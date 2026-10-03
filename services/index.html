@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="utf-8">
+  <!-- live-send --><script src="../site-config.js"></script><script src="../runtime/live-send.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Printing Services — City Graphics, Portland OR</title>
+  <meta name="description" content="Digital color printing, 54-inch wide-format, graphic design, full bindery, and mailing services under one roof in downtown Portland.">
+  <meta name="theme-color" content="#101412">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23101412'/%3E%3Ccircle cx='16' cy='16' r='7.5' fill='none' stroke='%23ffb81c' stroke-width='2.4'/%3E%3Cpath d='M16 4v24M4 16h24' stroke='%23ffb81c' stroke-width='2.4'/%3E%3C/svg%3E">
+  <link rel="preload" href="../fonts/f2-k3kQo8UDI-1M0wlSfdnoLg.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../pages.css">
+  <script src="../pages.js" defer></script>
+  <style>
+    /* Services: the shop's price list. Each service is a ruled row, number, name and spec,
+       read rather than clicked, so the rows carry no hover state. */
+    .services-list .ledger-item::before { content: none; }
+    .services-list .ledger-item:hover .ledger-num { text-shadow: none; }
+    .services-list .ledger-title { max-width: 20ch; }
+    @media (min-width: 1080px) {
+      .services-list .ledger-item {
+        grid-template-columns: clamp(3rem, 6vw, 5.5rem) minmax(0, 5fr) minmax(0, 7fr);
+        grid-template-rows: auto;
+      }
+      .services-list .ledger-num { grid-row: 1; }
+      .services-list .ledger-text { grid-column: 3; grid-row: 1; margin-top: 0; font-size: 1.0625rem; }
+    }
+
+    /* The foot of the sheet: an amber job tab for promotional products, then the dark call band. */
+    .closing {
+      display: grid;
+      gap: clamp(1rem, 2vw, 1.5rem);
+      margin-top: clamp(3rem, 6vw, 5rem);
+    }
+    .promo {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: .75rem 2.5rem;
+    }
+    .promo > * + * { margin-top: 0; }
+    .promo .promo-text {
+      max-width: 26ch;
+      color: var(--fg);
+      font-size: clamp(1.5rem, 1.15rem + 1.2vw, 2.25rem);
+      font-weight: 900;
+      font-stretch: 72%;
+      line-height: 1;
+      text-wrap: balance;
+    }
+    .promo .textlink {
+      font-size: clamp(1.25rem, 1.05rem + .7vw, 1.75rem);
+      font-weight: 800;
+      font-stretch: 85%;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .cta { padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 4rem); }
+    .cta::before { inset: 0 0 0 48%; }
+    .cta h2 { max-width: 13ch; }
+    .cta .cta-text {
+      max-width: 42ch;
+      color: var(--fg-2);
+      font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem);
+      line-height: 1.55;
+      text-wrap: pretty;
+    }
+    .cta .actions { margin-top: 1.75rem; }
+    @media (max-width: 759px) {
+      .cta::before { inset: 52% 0 0 52%; }
+    }
+
+    @media (max-width: 420px) {
+      .plate-tabs > * { padding-inline: .6rem; letter-spacing: .12em; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Halftone screen: turns a red ramp + green dot field into amber dots that shrink toward the edge of the light. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="halftone-amber" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.7216  0 0 0 0 0.1098  6 6 0 0 -6"/>
+    </filter>
+  </svg>
+
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="../index.html">
+        <img src="../assets/logo.svg" alt="City Graphics" width="252" height="50">
+        <span class="brand-place">Portland, Oregon</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="../services/" aria-current="page">Services</a></li>
+          <li><a href="../why-us/">Why Us</a></li>
+          <li><a href="../portals/">Portals</a></li>
+          <li><a href="../learn/">New to Printing?</a></li>
+          <li><a href="../non-profit/">Non-Profits</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--chrome" href="../quote/">Get a quote</a>
+      <details class="menu">
+        <summary>
+          <span class="visually-hidden">Menu</span>
+          <svg class="i-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6.5h18M3 12h18M3 17.5h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </summary>
+        <nav class="menu-panel" aria-label="Menu">
+          <ol>
+            <li><a href="../services/" aria-current="page"><span class="menu-num">01</span>Services</a></li>
+            <li><a href="../why-us/"><span class="menu-num">02</span>Why Us</a></li>
+            <li><a href="../portals/"><span class="menu-num">03</span>Portals</a></li>
+            <li><a href="../learn/"><span class="menu-num">04</span>New to Printing?</a></li>
+            <li><a href="../quote/"><span class="menu-num">05</span>Get a quote</a></li>
+            <li><a href="../non-profit/"><span class="menu-num">06</span>Non-Profits</a></li>
+            <li><a href="../contact/"><span class="menu-num">07</span>Contact</a></li>
+          </ol>
+        </nav>
+      </details>
+    </div>
+    <div class="press-bar" aria-hidden="true"><i></i></div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="masthead masthead--split">
+      <div class="masthead-inner">
+        <div class="masthead-copy">
+          <p class="kicker">Our Services</p>
+          <h1 class="display">One team coordinating your whole job.</h1>
+          <p class="lede">From a stack of business cards to a trade-show booth, we use the right process for the job — in-house or through trusted trade partners — and tell you honestly which one that is.</p>
+          <div class="actions">
+            <a class="btn" href="../quote/">Get a quote</a>
+            <a class="textlink" href="tel:+15032222942">Call (503) 222-2942</a>
+            <a class="textlink" href="mailto:sendjob@citygi.com">sendjob@citygi.com</a>
+          </div>
+        </div>
+        <figure class="plate">
+          <img src="../media/ffef2a67a688.webp" alt="Cyan, magenta, yellow and black toner powder" width="750" height="500" fetchpriority="high">
+          <figcaption class="plate-tabs"><p>Print</p><p>Wide format</p><p>Bindery</p></figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <ol class="ledger services-list" role="list">
+        <li class="ledger-item">
+          <p class="ledger-num">01</p>
+          <h2 class="ledger-title">Digital color printing</h2>
+          <p class="ledger-text">Quick-turnaround, short-run, full-color work on our Digital presses — standard sheets up to 13×19½″, and long-sheet printing up to 51 inches for banners, book covers, and panoramic pieces. Business cards, postcards, flyers, brochures, marketing collateral, menus, stationery, variable-data printing.</p>
+        </li>
+        <li class="ledger-item">
+          <p class="ledger-num">02</p>
+          <h2 class="ledger-title">Wide format</h2>
+          <p class="ledger-text">Printing up to 50+″ wide — posters, banners, signage, canvas and fine-art prints, with optional mounting and laminating. Trade show panels and banner stands. Larger rigid work (up to 4×8 sheets, routing and cutting) handled through our trusted production partners.</p>
+        </li>
+        <li class="ledger-item">
+          <p class="ledger-num">03</p>
+          <h2 class="ledger-title">Design &amp; prepress</h2>
+          <p class="ledger-text">In-house graphic design, file setup and conversion, color correction, proofs, imposition &amp; custom work/projects — tell us what you need.</p>
+        </li>
+        <li class="ledger-item">
+          <p class="ledger-num">04</p>
+          <h2 class="ledger-title">Bindery &amp; finishing</h2>
+          <p class="ledger-text">Cutting, folding, saddle stitch, coil binding, perfect binding, Wire-O, laminating, scoring, padding, drilling, collating, shrink wrap, die cutting, round cornering, numbering, perforating, tabbing, mounting on gator or foamcore.</p>
+        </li>
+        <li class="ledger-item">
+          <p class="ledger-num">05</p>
+          <h2 class="ledger-title">Mailing services</h2>
+          <p class="ledger-text">List processing, addressing, presorting, and machine inserting — we can take your mailing from design to the post office in one shop.</p>
+        </li>
+      </ol>
+
+      <div class="closing">
+        <div class="card card--amber promo">
+          <p class="promo-text">Promotional products available — call us.</p>
+          <a class="textlink" href="tel:+15032222942">(503) 222-2942</a>
+        </div>
+        <section class="band cta" aria-labelledby="cta-title">
+          <h2 id="cta-title">Not sure what you need? That's normal.</h2>
+          <p class="cta-text">Get a quote and describe it in plain words — we'll figure out the rest together.</p>
+          <div class="actions">
+            <a class="btn" href="../quote/">Get a quote</a>
+            <a class="textlink" href="mailto:sendjob@citygi.com">sendjob@citygi.com</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a class="foot-logo" href="../index.html"><img src="../assets/logo.svg" alt="City Graphics home" width="252" height="50" loading="lazy"></a>
+        <address class="foot-address">
+          <p>222 SW 4th Avenue<br>Portland, OR 97204</p>
+          <p>Monday–Friday, 9:30–4:30</p>
+          <p><a href="tel:+15032222942">(503) 222-2942</a><br><a href="tel:+15032229341">Fax (503) 222-9341</a><br><a href="mailto:sendjob@citygi.com">sendjob@citygi.com</a></p>
+        </address>
+      </div>
+      <nav class="foot-nav" aria-labelledby="foot-sitemap">
+        <h2 id="foot-sitemap">Sitemap</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../services/" aria-current="page">Services</a></li>
+          <li><a href="../why-us/">Why Us</a></li>
+          <li><a href="../portals/">Portals</a></li>
+          <li><a href="../learn/">New to Printing?</a></li>
+          <li><a href="../quote/">Get a quote</a></li>
+          <li><a href="../non-profit/">Non-Profits</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+        <p class="foot-privacy"><a href="../privacy/">Privacy &amp; Your Files</a></p>
+      </nav>
+    </div>
+    <p class="foot-legal">© City Graphics 2026. All rights reserved. Site design, content, and the portal experience are proprietary to City Graphics.</p>
+  </footer>
+</body>
+</html>

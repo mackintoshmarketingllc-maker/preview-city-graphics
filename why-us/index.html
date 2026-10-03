@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="utf-8">
+  <!-- live-send --><script src="../site-config.js"></script><script src="../runtime/live-send.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Why City Graphics — Portland Print Specialists</title>
+  <meta name="description" content="A small, experienced downtown Portland print team that picks the right process for your job and stands behind the work.">
+  <meta name="theme-color" content="#101412">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23101412'/%3E%3Ccircle cx='16' cy='16' r='7.5' fill='none' stroke='%23ffb81c' stroke-width='2.4'/%3E%3Cpath d='M16 4v24M4 16h24' stroke='%23ffb81c' stroke-width='2.4'/%3E%3C/svg%3E">
+  <link rel="preload" href="../fonts/f2-k3kQo8UDI-1M0wlSfdnoLg.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../pages.css">
+  <script src="../pages.js" defer></script>
+  <style>
+    /* Why us: the bridge photograph printed on the sheet, the shop's two reasons laid over its foot. */
+    .roots-cover {
+      display: flex;
+      align-items: flex-start;
+      min-height: clamp(26rem, 50vw, 42rem);
+      padding: clamp(1.5rem, 4.5vw, 3.5rem);
+      background: var(--k);
+    }
+    .roots-cover > img:first-child { object-position: 50% 30%; }
+    /* Dark at the head for the type, open in the middle so the arches read. */
+    .roots-cover::after {
+      background:
+        linear-gradient(180deg, rgba(16, 20, 18, .5), rgba(16, 20, 18, 0) 50%, rgba(16, 20, 18, .5)),
+        linear-gradient(90deg, rgba(16, 20, 18, .7), rgba(16, 20, 18, 0) 62%);
+    }
+    .roots-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .roots-copy > .kicker { order: 2; margin-top: 1.5rem; }
+    .roots-title {
+      max-width: 9ch;
+      color: var(--fg);
+      font-size: clamp(2.625rem, 1.4rem + 4vw, 5.25rem);
+      font-weight: 900;
+      font-stretch: 70%;
+      line-height: .9;
+      letter-spacing: -.01em;
+      text-wrap: balance;
+    }
+
+    .roots-points {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .roots-points .card .label { color: var(--accent); }
+    .roots-points .card p:not(.label) { font-size: 1.0625rem; }
+    .roots-points .btn { justify-self: start; }
+    @media (min-width: 640px) {
+      .roots-points { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+      .roots-points .btn { grid-column: 1 / -1; }
+    }
+    @media (min-width: 1080px) {
+      .roots-cover { padding-bottom: clamp(9rem, 13vw, 12rem); }
+      .roots-points {
+        grid-template-columns: repeat(2, minmax(0, 21rem)) auto;
+        align-items: end;
+        margin-top: calc(-1 * clamp(6rem, 8vw, 8rem));
+        padding-inline: clamp(1.5rem, 4.5vw, 3.5rem);
+      }
+      .roots-points .btn { grid-column: auto; }
+      .roots-points .card { box-shadow: inset 0 0 0 1px var(--rule-strong), 0 1.5rem 2.5rem -1.25rem rgba(0, 0, 0, .55); }
+      .roots-points .card--amber { box-shadow: 0 1.5rem 2.5rem -1.25rem rgba(0, 0, 0, .55); }
+    }
+
+    @media (max-width: 420px) {
+      .plate-tabs > * { padding-inline: .6rem; letter-spacing: .12em; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Halftone screen: turns a red ramp + green dot field into amber dots that shrink toward the edge of the light. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="halftone-amber" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.7216  0 0 0 0 0.1098  6 6 0 0 -6"/>
+    </filter>
+  </svg>
+
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="../index.html">
+        <img src="../assets/logo.svg" alt="City Graphics" width="252" height="50">
+        <span class="brand-place">Portland, Oregon</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="../why-us/" aria-current="page">Why Us</a></li>
+          <li><a href="../portals/">Portals</a></li>
+          <li><a href="../learn/">New to Printing?</a></li>
+          <li><a href="../non-profit/">Non-Profits</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--chrome" href="../quote/">Get a quote</a>
+      <details class="menu">
+        <summary>
+          <span class="visually-hidden">Menu</span>
+          <svg class="i-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6.5h18M3 12h18M3 17.5h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </summary>
+        <nav class="menu-panel" aria-label="Menu">
+          <ol>
+            <li><a href="../services/"><span class="menu-num">01</span>Services</a></li>
+            <li><a href="../why-us/" aria-current="page"><span class="menu-num">02</span>Why Us</a></li>
+            <li><a href="../portals/"><span class="menu-num">03</span>Portals</a></li>
+            <li><a href="../learn/"><span class="menu-num">04</span>New to Printing?</a></li>
+            <li><a href="../quote/"><span class="menu-num">05</span>Get a quote</a></li>
+            <li><a href="../non-profit/"><span class="menu-num">06</span>Non-Profits</a></li>
+            <li><a href="../contact/"><span class="menu-num">07</span>Contact</a></li>
+          </ol>
+        </nav>
+      </details>
+    </div>
+    <div class="press-bar" aria-hidden="true"><i></i></div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="masthead masthead--split">
+      <div class="masthead-inner">
+        <div class="masthead-copy">
+          <p class="kicker">Why City Graphics</p>
+          <h1 class="display">Small shop. Deep bench.</h1>
+          <p class="lede">Our mission is simple: an exceptional customer experience, built on service, technology, and a commitment to total customer satisfaction.</p>
+          <div class="actions">
+            <a class="btn" href="../quote/">Get a quote</a>
+            <a class="textlink" href="tel:+15032222942">Call (503) 222-2942</a>
+            <a class="textlink" href="mailto:sendjob@citygi.com">sendjob@citygi.com</a>
+          </div>
+        </div>
+        <figure class="plate">
+          <img src="../media/23e5457a9d03.webp" alt="Fanned sheets of colored paper across the spectrum" width="750" height="500" fetchpriority="high">
+          <figcaption class="plate-tabs"><p>Process</p><p>People</p><p>Quality</p></figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <div class="cover on-dark roots-cover">
+        <img src="../media/6366f3ee2207.webp" alt="" width="1869" height="2800" loading="lazy">
+        <div class="roots-copy">
+          <p class="kicker">Built here · Still here</p>
+          <p class="roots-title">Downtown roots. Citywide reach.</p>
+        </div>
+      </div>
+      <div class="roots-points">
+        <div class="card">
+          <p class="label">The right process</p>
+          <p>We print digitally and work with trusted trade partners for what we don't run in-house, so your job lands on the process that serves it best — quality and cost both considered.</p>
+        </div>
+        <div class="card card--amber">
+          <p class="label">People who print</p>
+          <p>Your job is run by people who've spent their careers in production — prepress through bindery — and who check the work at every step.</p>
+        </div>
+        <a class="btn" href="../quote/">Get a quote</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a class="foot-logo" href="../index.html"><img src="../assets/logo.svg" alt="City Graphics home" width="252" height="50" loading="lazy"></a>
+        <address class="foot-address">
+          <p>222 SW 4th Avenue<br>Portland, OR 97204</p>
+          <p>Monday–Friday, 9:30–4:30</p>
+          <p><a href="tel:+15032222942">(503) 222-2942</a><br><a href="tel:+15032229341">Fax (503) 222-9341</a><br><a href="mailto:sendjob@citygi.com">sendjob@citygi.com</a></p>
+        </address>
+      </div>
+      <nav class="foot-nav" aria-labelledby="foot-sitemap">
+        <h2 id="foot-sitemap">Sitemap</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="../why-us/" aria-current="page">Why Us</a></li>
+          <li><a href="../portals/">Portals</a></li>
+          <li><a href="../learn/">New to Printing?</a></li>
+          <li><a href="../quote/">Get a quote</a></li>
+          <li><a href="../non-profit/">Non-Profits</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+        <p class="foot-privacy"><a href="../privacy/">Privacy &amp; Your Files</a></p>
+      </nav>
+    </div>
+    <p class="foot-legal">© City Graphics 2026. All rights reserved. Site design, content, and the portal experience are proprietary to City Graphics.</p>
+  </footer>
+</body>
+</html>

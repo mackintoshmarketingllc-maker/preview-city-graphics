@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="utf-8">
+  <!-- live-send --><script src="../../site-config.js"></script><script src="../../runtime/live-send.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Fonts Without Paying: How Font Licensing Actually Works — City Graphics</title>
+  <meta name="description" content="A font is licensed software, not a free asset — some fonts are free to use, some require a paid license. Separately, if a font isn't set up right in your file, it can go unnoticed until the proof stage.">
+  <meta name="theme-color" content="#101412">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23101412'/%3E%3Ccircle cx='16' cy='16' r='7.5' fill='none' stroke='%23ffb81c' stroke-width='2.4'/%3E%3Cpath d='M16 4v24M4 16h24' stroke='%23ffb81c' stroke-width='2.4'/%3E%3C/svg%3E">
+  <link rel="preload" href="../../fonts/f2-k3kQo8UDI-1M0wlSfdnoLg.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <link rel="stylesheet" href="../../pages.css">
+  <script src="../../pages.js" defer></script>
+  <style>
+    /* Guide pages: the article's small print. */
+    .prose .list-lead + ul { margin-top: .55em; }
+
+    /* The two fixes are paragraphs in their own right: give each its own breath. */
+    .prose .fixes > li + li { margin-top: 1.1em; }
+
+    /* Sources: small print under the press colour bar. */
+    .prose > .sources { margin-top: clamp(2.75rem, 5vw, 3.75rem); }
+    .sources { position: relative; padding-top: 1.6rem; }
+    .sources::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--cyan) 0 25%, var(--magenta) 0 50%, var(--yellow) 0 75%, var(--k-patch) 0);
+    }
+    .prose .sources h2 {
+      margin: 0;
+      color: var(--fg);
+      font-size: .75rem;
+      font-weight: 700;
+      font-stretch: 100%;
+      letter-spacing: .2em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+    .prose .sources ol { margin-top: .9rem; }
+    .prose .sources li + li { margin-top: .4em; }
+
+    .endnote a { margin-left: .3em; }
+
+    @media (forced-colors: active) {
+      .sources::before { forced-color-adjust: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Halftone screen: turns a red ramp + green dot field into amber dots that shrink toward the edge of the light. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="halftone-amber" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.7216  0 0 0 0 0.1098  6 6 0 0 -6"/>
+    </filter>
+  </svg>
+
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../assets/logo.svg" alt="City Graphics" width="252" height="50">
+        <span class="brand-place">Portland, Oregon</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="../../services/">Services</a></li>
+          <li><a href="../../why-us/">Why Us</a></li>
+          <li><a href="../../portals/">Portals</a></li>
+          <li><a href="../../learn/" aria-current="page">New to Printing?</a></li>
+          <li><a href="../../non-profit/">Non-Profits</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--chrome" href="../../quote/">Get a quote</a>
+      <details class="menu">
+        <summary>
+          <span class="visually-hidden">Menu</span>
+          <svg class="i-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6.5h18M3 12h18M3 17.5h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </summary>
+        <nav class="menu-panel" aria-label="Menu">
+          <ol>
+            <li><a href="../../services/"><span class="menu-num">01</span>Services</a></li>
+            <li><a href="../../why-us/"><span class="menu-num">02</span>Why Us</a></li>
+            <li><a href="../../portals/"><span class="menu-num">03</span>Portals</a></li>
+            <li><a href="../../learn/" aria-current="page"><span class="menu-num">04</span>New to Printing?</a></li>
+            <li><a href="../../quote/"><span class="menu-num">05</span>Get a quote</a></li>
+            <li><a href="../../non-profit/"><span class="menu-num">06</span>Non-Profits</a></li>
+            <li><a href="../../contact/"><span class="menu-num">07</span>Contact</a></li>
+          </ol>
+        </nav>
+      </details>
+    </div>
+    <div class="press-bar" aria-hidden="true"><i></i></div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <article>
+      <div class="masthead masthead--short">
+        <div class="masthead-inner">
+          <div class="masthead-copy">
+            <a class="backlink" href="../../learn/"><span aria-hidden="true">←</span>&nbsp;All beginner guides</a>
+            <p class="kicker">Getting comfortable · 5 min read</p>
+            <h1 class="display display--m">Fonts Without Paying: How Font Licensing Actually Works</h1>
+            <p class="lede">A font is licensed software, not a free asset — some fonts are free to use, some require a paid license. Separately, if a font isn't set up right in your file, it can go unnoticed until the proof stage.</p>
+            <p class="byline">Reviewed by Greg Mackintosh</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sheet sheet--page">
+        <div class="prose">
+          <p>Here's an honest admission from City Graphics after thirty years in this trade: fonts can be an issue, and even after all that time, the licensing side of it isn't fully intuitive. Sometimes you have to buy a font to use it, sometimes you don't, and it's not always obvious which is which. If it confuses people who've been doing this for decades, it's not going to be obvious to you on the first try either.</p>
+
+          <blockquote>
+            <p><strong>What this means for your order:</strong> a font issue almost never shows up as an error message — it shows up as something looking "off" once your file is proofed. Catching it before that point, by embedding or outlining your fonts, saves a round of back-and-forth.</p>
+          </blockquote>
+
+          <h2>Why do some fonts cost money?</h2>
+          <p>A font isn't just a shape you can copy freely — it's licensed software, the same category as an app or a piece of design software. Whoever designed that typeface controls how it can be used, and different licenses cover different things: using it on your own desktop is one kind of license, embedding it on a website is another. That's why the same font can be free for one kind of use and require payment for another.</p>
+          <p>There are, though, plenty of fonts that are free to use, including commercially, under an open license — Google Fonts is a well-known source of these, licensed so they're free for personal and commercial use alike.</p>
+
+          <h2>What actually goes wrong when there's a font issue?</h2>
+          <p>Generally, nothing does — most jobs run through without a hitch. But every now and then, something looks weird in the proof, or a customer says "hey, that doesn't look right." That's usually a font problem showing up: the file was built with a font the printer's system doesn't have, so something else got substituted in without anyone intending it to.</p>
+          <p>When that happens, the fix is usually to hunt down a substitute font, or ask for the file to be saved differently — sometimes handed over as a properly packaged file that bundles the fonts along with everything else the design needs.</p>
+
+          <h2>How do I avoid this before it ever gets to the proof stage?</h2>
+          <p>There are two common fixes, though which one fits can depend on your specific font's license:</p>
+          <ul class="fixes">
+            <li><strong>Embed the font.</strong> This bundles the actual font data into your PDF, so the file carries what it needs instead of assuming the next computer has the same font installed. The good news: in most design tools, this happens automatically when you export to PDF — InDesign, Illustrator, and Canva's PDF Print option all embed fonts on export as long as the font's license allows it. In Word, it's a setting you turn on: File → Options → Save → check "Embed fonts in the file" before saving as PDF. To confirm it worked, open your finished PDF in Adobe Acrobat and look at File → Properties → Fonts — each font should say "(Embedded)" or "(Embedded Subset)" next to its name.</li>
+            <li><strong>Outline the font.</strong> This converts your text into shapes (essentially tiny vector drawings) instead of live, editable text. In InDesign or Illustrator: select your text, then go to Type → Create Outlines. In Affinity tools it's called Convert to Curves. (Word, PowerPoint, and Canva don't have an outline function — for those, rely on embedding instead.) Once it's outlined, there's no font to substitute at all — it just looks like your text, permanently, because it no longer "is" text in the technical sense. The tradeoff is that outlined text can't be edited as text anymore, so do it on a copy of your file, and only once your design is truly final.</li>
+          </ul>
+          <p>If you're working in InDesign, using the Package feature bundles your fonts and linked images together into one folder for the printer — a save-for-printer workflow that avoids the substitution problem from a different angle: instead of embedding or outlining, it hands the printer the actual font files your layout depends on.</p>
+
+          <h2>Do I need to worry about this with free fonts too?</h2>
+          <p>It's still worth a check either way. Google Fonts, the best-known source of free fonts, is licensed for personal and commercial use. Fonts that come with your computer or design tools are covered by those products' licenses — for unusual uses, the font's license is the source of truth. But "free" isn't automatically the same thing as "no licensing questions" — when you're not sure what a font's license actually allows, checking it directly is the safer move than assuming. The bigger practical risk with any font — free or paid — is whether the printer's system actually has that exact font installed. Embedding or outlining solves that regardless of where the font came from.</p>
+
+          <h2>What this article can't tell you</h2>
+          <p>Whether your specific printer's proofing process will catch a font substitution automatically, or whether it depends on someone noticing it looks off, varies by shop. This article can tell you how to avoid the problem at the file-prep stage; it can't guarantee every possible mismatch gets caught downstream. Building the file right the first time is still the most reliable move.</p>
+          <p>Building a file with fonts you're not sure about? <a href="../../quote/">Get a quote</a> and we can flag anything that needs a second look before it prints.</p>
+
+          <p class="list-lead"><strong>Next steps:</strong></p>
+          <ul>
+            <li><a href="../../learn/print-ready-pdf/">How do I save a print-ready PDF?</a></li>
+            <li><a href="../../learn/what-is-bleed/">What is bleed, and do I really need it?</a></li>
+            <li><a href="../../learn/how-print-ordering-works/">How print ordering actually works</a></li>
+          </ul>
+
+          <section class="sources" aria-labelledby="sources-title">
+            <h2 id="sources-title">Sources</h2>
+            <ol>
+              <li><a href="https://fonts.google.com/faq">https://fonts.google.com/faq</a></li>
+              <li><a href="https://www.myfonts.com/pages/faq">https://www.myfonts.com/pages/faq</a></li>
+              <li><a href="https://www.prepressure.com/pdf/basics/fonts">https://www.prepressure.com/pdf/basics/fonts</a></li>
+            </ol>
+          </section>
+
+          <div class="pager">
+            <a class="pager-prev" href="../../learn/print-ready-pdf/">
+              <p class="label">Previous guide</p>
+              <p class="pager-title">How to Save a Print-Ready PDF (From Whatever You Design In)</p>
+            </a>
+          </div>
+
+          <p class="endnote">Questions about your own project? We're happy to help — no pressure.<a href="../../quote/">Reach out when you're ready</a>.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a class="foot-logo" href="../../index.html"><img src="../../assets/logo.svg" alt="City Graphics home" width="252" height="50" loading="lazy"></a>
+        <address class="foot-address">
+          <p>222 SW 4th Avenue<br>Portland, OR 97204</p>
+          <p>Monday–Friday, 9:30–4:30</p>
+          <p><a href="tel:+15032222942">(503) 222-2942</a><br><a href="tel:+15032229341">Fax (503) 222-9341</a><br><a href="mailto:sendjob@citygi.com">sendjob@citygi.com</a></p>
+        </address>
+      </div>
+      <nav class="foot-nav" aria-labelledby="foot-sitemap">
+        <h2 id="foot-sitemap">Sitemap</h2>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../services/">Services</a></li>
+          <li><a href="../../why-us/">Why Us</a></li>
+          <li><a href="../../portals/">Portals</a></li>
+          <li><a href="../../learn/" aria-current="page">New to Printing?</a></li>
+          <li><a href="../../quote/">Get a quote</a></li>
+          <li><a href="../../non-profit/">Non-Profits</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+        </ul>
+        <p class="foot-privacy"><a href="../../privacy/">Privacy &amp; Your Files</a></p>
+      </nav>
+    </div>
+    <p class="foot-legal">© City Graphics 2026. All rights reserved. Site design, content, and the portal experience are proprietary to City Graphics.</p>
+  </footer>
+</body>
+</html>

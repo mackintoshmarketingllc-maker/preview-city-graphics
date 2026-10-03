@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="utf-8">
+  <!-- live-send --><script src="../site-config.js"></script><script src="../runtime/live-send.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Company Print Portals — City Graphics, Portland OR</title>
+  <meta name="description" content="Order business cards and branded print through your company's own portal — locked templates, live proofs, one-click approval. Built and run by City Graphics.">
+  <meta name="theme-color" content="#101412">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23101412'/%3E%3Ccircle cx='16' cy='16' r='7.5' fill='none' stroke='%23ffb81c' stroke-width='2.4'/%3E%3Cpath d='M16 4v24M4 16h24' stroke='%23ffb81c' stroke-width='2.4'/%3E%3C/svg%3E">
+  <link rel="preload" href="../fonts/f2-k3kQo8UDI-1M0wlSfdnoLg.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../pages.css">
+  <script src="../pages.js" defer></script>
+  <script src="page.js" defer></script>
+  <style>
+    /* ---------------------------------------------------------------- intro */
+
+    /* The heading prints its slug line underneath, the way the masthead does. */
+    .portal-intro-head {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .portal-intro-head > .kicker { order: 2; margin-top: 1.5rem; }
+    .portal-intro-head .section-title {
+      max-width: 13ch;
+      margin-bottom: 0;
+      font-size: clamp(2.25rem, 1.35rem + 3vw, 4rem);
+      line-height: .94;
+    }
+
+    .portal-intro-body { display: grid; gap: 1.75rem; }
+    .portal-pitch {
+      max-width: 58ch;
+      color: var(--fg-2);
+      font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem);
+      line-height: 1.62;
+      text-wrap: pretty;
+    }
+    .portal-intro-body .callout {
+      margin: 0;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    /* Features as a job-ticket checklist: every box already ticked. */
+    .ticks {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 2px solid var(--fg);
+    }
+    .ticks li {
+      display: grid;
+      grid-template-columns: 1.25rem minmax(0, 1fr);
+      gap: .9rem;
+      align-items: start;
+      padding: .95rem 0;
+      border-bottom: 1px solid var(--rule-strong);
+      color: var(--fg);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .ticks li::before {
+      content: "";
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-top: .05rem;
+      border-radius: 2px;
+      background: var(--check-bg) var(--tick) center / 85% no-repeat;
+    }
+
+    /* ---------------------------------------------------------------- try it */
+
+    .portal-try { display: grid; gap: clamp(1.5rem, 3vw, 2.25rem); }
+    .try-lede {
+      max-width: 52ch;
+      color: var(--fg-2);
+      font-size: clamp(1.1875rem, 1rem + .7vw, 1.625rem);
+      font-weight: 600;
+      line-height: 1.4;
+      text-wrap: pretty;
+    }
+    /* Marked up like a proof: a highlighter pass under the promise. */
+    .try-lede strong {
+      color: var(--fg);
+      font-weight: 800;
+      background: linear-gradient(transparent 58%, var(--y-tint) 58% 94%, transparent 94%);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+
+    /* ---------------------------------------------------------------- the demo */
+
+    .demo h2 {
+      font-size: clamp(2rem, 1.4rem + 2.2vw, 3.25rem);
+      font-stretch: 70%;
+      line-height: .96;
+    }
+    .demo-panel[data-step="1"] { align-items: center; }
+    .demo-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 0;
+    }
+    .demo-copy .label + h2,
+    .demo-review-head .label + h2 { margin-top: .75rem; }
+    .demo-text {
+      max-width: 34ch;
+      margin-top: 1rem;
+      color: var(--fg-2);
+      font-size: 1.0625rem;
+      line-height: 1.55;
+    }
+    .demo-copy > .demo-actions { margin-top: 1.75rem; }
+
+    .demo-fields {
+      display: grid;
+      gap: 1.15rem;
+      width: 100%;
+      margin-top: 1.6rem;
+    }
+
+    .demo-textbtn {
+      min-height: 2.75rem;
+      padding: 0;
+      border: 0;
+      background: none;
+      font: 700 1rem/1.2 var(--font);
+      cursor: pointer;
+    }
+
+    .demo-review-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.25rem 2rem;
+    }
+    .demo-proofs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+      gap: clamp(1.25rem, 3vw, 2.25rem);
+    }
+
+    /* ---------------------------------------------------------------- the proof card
+       The frame is the size container, so the card's type scales with the card, not the window. */
+
+    .proof-frame {
+      display: grid;
+      gap: .8rem;
+      min-width: 0;
+      margin: 0;
+      container-type: inline-size;
+    }
+    .proof {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 4cqi;
+      padding: 6.5cqi 7cqi 6cqi;
+    }
+    .proof .proof-badge {
+      top: 3.4cqi;
+      right: 4.2cqi;
+      font-size: max(.625rem, 1.9cqi);
+    }
+    /* The client's own marks: an amber bar along the top edge and a green one down the side. */
+    .proof::before,
+    .proof::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    .proof::before { width: 34%; height: max(4px, 1.5cqi); background: var(--amber); }
+    .proof::after { width: max(4px, 1.4cqi); height: 72%; background: var(--green-ink); }
+
+    .proof-mark { display: grid; justify-items: start; gap: .45em; }
+    .proof-mark-name {
+      color: var(--k);
+      font-size: max(1.375rem, 8.4cqi);
+      font-weight: 900;
+      font-stretch: 70%;
+      line-height: .9;
+      text-transform: uppercase;
+    }
+    .proof-mark-sub {
+      color: var(--green-ink);
+      font-size: max(.625rem, 2.6cqi);
+      font-weight: 700;
+      letter-spacing: .32em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .proof-person {
+      display: grid;
+      justify-items: start;
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+    .proof-name {
+      color: var(--k);
+      font-size: max(1.0625rem, 4.9cqi);
+      font-weight: 800;
+      font-stretch: 75%;
+      line-height: 1.05;
+    }
+    .proof-title {
+      margin: .3em 0 .55em;
+      color: var(--green-ink);
+      font-size: max(.6875rem, 2.4cqi);
+      font-weight: 700;
+      line-height: 1.25;
+    }
+    .proof-line {
+      color: var(--fg-3);
+      font-size: max(.6875rem, 2.2cqi);
+      line-height: 1.45;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .proof--back {
+      align-items: center;
+      justify-content: center;
+      gap: 3.5cqi;
+      background: var(--green-ink);
+      color: var(--paper);
+      text-align: center;
+    }
+    .proof--back::after { background: var(--amber); }
+    .proof--back .proof-mark { justify-items: center; }
+    .proof--back .proof-mark-name { color: var(--paper); }
+    .proof--back .proof-mark-sub { color: color-mix(in srgb, var(--amber) 70%, var(--paper)); }
+    .proof-backline {
+      color: var(--paper);
+      font-size: max(.625rem, 2.1cqi);
+      font-weight: 700;
+      letter-spacing: .24em;
+      line-height: 1.2;
+    }
+
+    /* ---------------------------------------------------------------- approved */
+
+    .demo-done {
+      --accent: var(--paper);
+      --fg-2: rgba(244, 241, 232, .9);
+      --link-hover: var(--paper);
+      justify-items: start;
+      gap: 0;
+      background: var(--green-ink);
+    }
+    .demo-done > .label { margin-top: 1.75rem; }
+    .demo-done h2 {
+      max-width: 18ch;
+      margin-top: .75rem;
+      font-size: clamp(2.25rem, 1.5rem + 3vw, 4rem);
+      line-height: .94;
+    }
+    .demo-done > p:not(.label) { margin-top: 1rem; color: var(--fg-2); }
+    .demo-done > .demo-actions { margin-top: 2rem; }
+    .approve-mark {
+      display: grid;
+      place-items: center;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 2px;
+      background: var(--amber);
+      color: var(--k);
+    }
+    .approve-mark svg { display: block; width: 1.75rem; height: 1.75rem; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      /* The start button slips out of register twice to say "press here", then holds still. */
+      .demo-start { animation: off-register 2s var(--ease) 1s 2; }
+      .demo-start:hover,
+      .demo-start:focus-visible { animation: none; }
+      /* Approval: the panel feeds off the press and the tick's plates settle into register. */
+      .demo-done:not([hidden]) { animation: sheet-feed .7s var(--ease) both; }
+      .demo-done:not([hidden]) .approve-mark { animation: mark-register 1s var(--ease) .3s both; }
+    }
+    @keyframes off-register {
+      0%, 55%, 100% { box-shadow: 0 0 0 0 var(--cyan), 0 0 0 0 var(--magenta); }
+      72% { box-shadow: -3px -2px 0 0 var(--cyan), 3px 2px 0 0 var(--magenta); }
+    }
+    @keyframes mark-register {
+      from { box-shadow: -7px -5px 0 0 var(--cyan), 7px 5px 0 0 var(--magenta); }
+      to { box-shadow: 0 0 0 0 var(--cyan), 0 0 0 0 var(--magenta); }
+    }
+
+    /* ---------------------------------------------------------------- closing call */
+
+    .portal-cta {
+      display: grid;
+      gap: 1.25rem clamp(2rem, 5vw, 4.5rem);
+      padding-top: clamp(2rem, 4vw, 3rem);
+      border-top: 2px solid var(--fg);
+    }
+    @media (min-width: 900px) {
+      .portal-cta { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); align-items: baseline; }
+    }
+    .portal-cta .section-title { margin-bottom: 0; }
+    .portal-cta-line {
+      color: var(--fg-2);
+      font-size: clamp(1.25rem, 1rem + 1vw, 1.875rem);
+      font-weight: 600;
+      line-height: 1.42;
+      text-wrap: pretty;
+    }
+    .portal-cta-line .link { font-weight: 800; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Halftone screen: turns a red ramp + green dot field into amber dots that shrink toward the edge of the light. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="halftone-amber" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.7216  0 0 0 0 0.1098  6 6 0 0 -6"/>
+    </filter>
+  </svg>
+
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="../index.html">
+        <img src="../assets/logo.svg" alt="City Graphics" width="252" height="50">
+        <span class="brand-place">Portland, Oregon</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="../why-us/">Why Us</a></li>
+          <li><a href="../portals/" aria-current="page">Portals</a></li>
+          <li><a href="../learn/">New to Printing?</a></li>
+          <li><a href="../non-profit/">Non-Profits</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--chrome" href="../quote/">Get a quote</a>
+      <details class="menu">
+        <summary>
+          <span class="visually-hidden">Menu</span>
+          <svg class="i-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6.5h18M3 12h18M3 17.5h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </summary>
+        <nav class="menu-panel" aria-label="Menu">
+          <ol>
+            <li><a href="../services/"><span class="menu-num">01</span>Services</a></li>
+            <li><a href="../why-us/"><span class="menu-num">02</span>Why Us</a></li>
+            <li><a href="../portals/" aria-current="page"><span class="menu-num">03</span>Portals</a></li>
+            <li><a href="../learn/"><span class="menu-num">04</span>New to Printing?</a></li>
+            <li><a href="../quote/"><span class="menu-num">05</span>Get a quote</a></li>
+            <li><a href="../non-profit/"><span class="menu-num">06</span>Non-Profits</a></li>
+            <li><a href="../contact/"><span class="menu-num">07</span>Contact</a></li>
+          </ol>
+        </nav>
+      </details>
+    </div>
+    <div class="press-bar" aria-hidden="true"><i></i></div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="masthead masthead--split">
+      <div class="masthead-inner">
+        <div class="masthead-copy">
+          <p class="kicker">Local press · Modern workflow</p>
+          <h1 class="display">A better way to order print.</h1>
+        </div>
+        <figure class="plate">
+          <img src="../media/5a79ea8468e7.webp" alt="Hands placing an order on a laptop" width="750" height="422" fetchpriority="high">
+          <figcaption class="plate-tabs"><p>Order</p><p>Proof</p><p>Approve</p></figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <section class="sheet-section split portal-intro" aria-labelledby="portals-title">
+        <div class="portal-intro-head">
+          <p class="kicker">Company Print Portals</p>
+          <h2 class="section-title" id="portals-title">Your brand. Their names. Zero back-and-forth.</h2>
+        </div>
+        <div class="portal-intro-body">
+          <p class="portal-pitch">We build private ordering portals for companies that print with us. Your templates stay locked to your brand — your people type their details, watch the proof update live, and approve. We print. No files, no email chains, no mistakes.</p>
+          <p class="callout">Our portals run in production today for corporate clients ordering through them right now.</p>
+          <ul class="ticks" role="list">
+            <li>Locked brand templates — nobody can break your identity</li>
+            <li>Live proof as you type</li>
+            <li>Built-in approval flow</li>
+            <li>One-click reorders</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="sheet-section portal-try">
+        <p class="try-lede">Click below and try it yourself — with your own info or anything made up. <strong>We don't use or keep any of it. This is just for testing.</strong></p>
+
+        <div class="demo" id="portal-demo">
+          <ol class="stepper" aria-label="Demo steps">
+            <li aria-current="step"><span class="step-num">01</span>Your card</li>
+            <li><span class="step-num">02</span>Your details</li>
+            <li><span class="step-num">03</span>Approve your proof</li>
+            <li><span class="step-num">04</span>Approved</li>
+          </ol>
+
+          <!-- Step 1: the locked template, with the sample details. -->
+          <section class="demo-body demo-body--split demo-panel" data-step="1" aria-labelledby="portal-demo-card">
+            <div class="demo-copy">
+              <p class="label">Step 1</p>
+              <h2 id="portal-demo-card">Your card</h2>
+              <p class="demo-text">Locked brand templates — nobody can break your identity.</p>
+              <div class="demo-actions">
+                <button class="btn demo-start" type="button" data-go="2" data-start>Click here to test it</button>
+              </div>
+            </div>
+            <figure class="proof-frame">
+              <div class="proof">
+                <span class="proof-badge">Demo</span>
+                <span class="proof-mark"><span class="proof-mark-name">Bridge City</span><span class="proof-mark-sub">Sample Co.</span></span>
+                <span class="proof-person">
+                  <span class="proof-name" data-bind="name">Jordan Lee</span>
+                  <span class="proof-title" data-bind="title">Community Partnerships</span>
+                  <span class="proof-line" data-bind="phone">(503) 555-0147</span>
+                  <span class="proof-line" data-bind="email">jordan@bridgecitysample.example</span>
+                </span>
+              </div>
+            </figure>
+          </section>
+
+          <!-- Step 2: type the details; every proof on the page follows as you type. -->
+          <form class="demo-body demo-body--split demo-panel" data-step="2" aria-labelledby="portal-demo-details" hidden>
+            <div class="demo-copy">
+              <p class="label">Step 2</p>
+              <h2 id="portal-demo-details" tabindex="-1" data-focus>Your details</h2>
+              <div class="demo-fields">
+                <div class="field">
+                  <label for="pd-name">Name</label>
+                  <input id="pd-name" name="name" type="text" value="Jordan Lee" maxlength="52" required autocomplete="name" aria-describedby="pd-name-error">
+                  <p class="field-error" id="pd-name-error" aria-live="polite"></p>
+                </div>
+                <div class="field">
+                  <label for="pd-title">Title</label>
+                  <input id="pd-title" name="title" type="text" value="Community Partnerships" maxlength="62" required autocomplete="organization-title" aria-describedby="pd-title-error">
+                  <p class="field-error" id="pd-title-error" aria-live="polite"></p>
+                </div>
+                <div class="field">
+                  <label for="pd-phone">Phone</label>
+                  <input id="pd-phone" name="phone" type="tel" value="(503) 555-0147" maxlength="32" required autocomplete="tel" aria-describedby="pd-phone-error">
+                  <p class="field-error" id="pd-phone-error" aria-live="polite"></p>
+                </div>
+                <div class="field">
+                  <label for="pd-email">Email</label>
+                  <input id="pd-email" name="email" type="email" value="jordan@bridgecitysample.example" maxlength="72" required autocomplete="email" aria-describedby="pd-email-error">
+                  <p class="field-error" id="pd-email-error" aria-live="polite"></p>
+                </div>
+              </div>
+              <div class="demo-actions">
+                <button class="demo-textbtn textlink" type="button" data-go="1">Back</button>
+                <button class="btn" type="submit">Review proof</button>
+              </div>
+            </div>
+            <figure class="proof-frame">
+              <figcaption class="label">Live proof</figcaption>
+              <div class="proof">
+                <span class="proof-badge">Demo</span>
+                <span class="proof-mark"><span class="proof-mark-name">Bridge City</span><span class="proof-mark-sub">Sample Co.</span></span>
+                <span class="proof-person">
+                  <span class="proof-name" data-bind="name">Jordan Lee</span>
+                  <span class="proof-title" data-bind="title">Community Partnerships</span>
+                  <span class="proof-line" data-bind="phone">(503) 555-0147</span>
+                  <span class="proof-line" data-bind="email">jordan@bridgecitysample.example</span>
+                </span>
+              </div>
+            </figure>
+          </form>
+
+          <!-- Step 3: front and back, side by side, before approval. -->
+          <section class="demo-body demo-panel" data-step="3" aria-labelledby="portal-demo-approve" hidden>
+            <div class="demo-review-head">
+              <div>
+                <p class="label">Step 3</p>
+                <h2 id="portal-demo-approve" tabindex="-1" data-focus>Approve your proof</h2>
+              </div>
+              <div class="demo-actions">
+                <button class="demo-textbtn textlink" type="button" data-go="2">Edit details</button>
+                <button class="btn" type="button" data-go="4">Approve</button>
+              </div>
+            </div>
+            <div class="demo-proofs">
+              <figure class="proof-frame">
+                <figcaption class="label">Front</figcaption>
+                <div class="proof">
+                  <span class="proof-badge">Demo</span>
+                  <span class="proof-mark"><span class="proof-mark-name">Bridge City</span><span class="proof-mark-sub">Sample Co.</span></span>
+                  <span class="proof-person">
+                    <span class="proof-name" data-bind="name">Jordan Lee</span>
+                    <span class="proof-title" data-bind="title">Community Partnerships</span>
+                    <span class="proof-line" data-bind="phone">(503) 555-0147</span>
+                    <span class="proof-line" data-bind="email">jordan@bridgecitysample.example</span>
+                  </span>
+                </div>
+              </figure>
+              <figure class="proof-frame">
+                <figcaption class="label">Back</figcaption>
+                <div class="proof proof--back">
+                  <span class="proof-badge">Demo</span>
+                  <span class="proof-mark"><span class="proof-mark-name">Bridge City</span><span class="proof-mark-sub">Sample Co.</span></span>
+                  <span class="proof-backline">PORTLAND, OREGON</span>
+                </div>
+              </figure>
+            </div>
+          </section>
+
+          <!-- Step 4: approved. Nothing is sent anywhere. -->
+          <section class="demo-body demo-panel demo-done" data-step="4" aria-labelledby="portal-demo-approved" role="status" aria-live="polite" hidden>
+            <span class="approve-mark" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4.5 12.5l5 5L19.5 7" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></span>
+            <p class="label">Step 4</p>
+            <h2 id="portal-demo-approved" tabindex="-1" data-focus>Approved — in production at City Graphics.</h2>
+            <p>(Demo only — nothing was ordered.)</p>
+            <div class="demo-actions">
+              <button class="btn" type="button" data-reset>Start over</button>
+              <a class="textlink" href="../quote/">Want this for your company? Get a quote</a>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <section class="sheet-section portal-cta" aria-labelledby="portal-cta-title">
+        <h2 class="section-title" id="portal-cta-title">Want this for your company?</h2>
+        <p class="portal-cta-line"><a class="link" href="../quote/">Get a quote</a> and mention portals, call <a class="link nowrap" href="tel:+15032222942">(503) 222-2942</a>, or email <a class="link" href="mailto:sendjob@citygi.com">sendjob@citygi.com</a>.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a class="foot-logo" href="../index.html"><img src="../assets/logo.svg" alt="City Graphics home" width="252" height="50" loading="lazy"></a>
+        <address class="foot-address">
+          <p>222 SW 4th Avenue<br>Portland, OR 97204</p>
+          <p>Monday–Friday, 9:30–4:30</p>
+          <p><a href="tel:+15032222942">(503) 222-2942</a><br><a href="tel:+15032229341">Fax (503) 222-9341</a><br><a href="mailto:sendjob@citygi.com">sendjob@citygi.com</a></p>
+        </address>
+      </div>
+      <nav class="foot-nav" aria-labelledby="foot-sitemap">
+        <h2 id="foot-sitemap">Sitemap</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="../why-us/">Why Us</a></li>
+          <li><a href="../portals/" aria-current="page">Portals</a></li>
+          <li><a href="../learn/">New to Printing?</a></li>
+          <li><a href="../quote/">Get a quote</a></li>
+          <li><a href="../non-profit/">Non-Profits</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+        <p class="foot-privacy"><a href="../privacy/">Privacy &amp; Your Files</a></p>
+      </nav>
+    </div>
+    <p class="foot-legal">© City Graphics 2026. All rights reserved. Site design, content, and the portal experience are proprietary to City Graphics.</p>
+  </footer>
+</body>
+</html>

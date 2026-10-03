@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="utf-8">
+  <!-- live-send --><script src="../../site-config.js"></script><script src="../../runtime/live-send.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>What's in a Print Quote? — City Graphics</title>
+  <meta name="description" content="A print quote bundles a few kinds of cost — setup, finishing, paper, and the press run — into one piece price, usually shown across a few quantities.">
+  <meta name="theme-color" content="#101412">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23101412'/%3E%3Ccircle cx='16' cy='16' r='7.5' fill='none' stroke='%23ffb81c' stroke-width='2.4'/%3E%3Cpath d='M16 4v24M4 16h24' stroke='%23ffb81c' stroke-width='2.4'/%3E%3C/svg%3E">
+  <link rel="preload" href="../../fonts/f2-k3kQo8UDI-1M0wlSfdnoLg.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <link rel="stylesheet" href="../../pages.css">
+  <script src="../../pages.js" defer></script>
+  <style>
+    /* Guide pages: the article's small print. */
+    .prose .list-lead + ul { margin-top: .55em; }
+
+    /* Sources: small print under the press colour bar. */
+    .prose > .sources { margin-top: clamp(2.75rem, 5vw, 3.75rem); }
+    .sources { position: relative; padding-top: 1.6rem; }
+    .sources::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--cyan) 0 25%, var(--magenta) 0 50%, var(--yellow) 0 75%, var(--k-patch) 0);
+    }
+    .prose .sources h2 {
+      margin: 0;
+      font-size: .75rem;
+      font-weight: 700;
+      font-stretch: 100%;
+      letter-spacing: .2em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+    .prose .sources ol { margin-top: .9rem; }
+    .prose .sources li + li { margin-top: .4em; }
+
+    .endnote a { margin-left: .3em; }
+
+    @media (forced-colors: active) {
+      .sources::before { forced-color-adjust: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Halftone screen: turns a red ramp + green dot field into amber dots that shrink toward the edge of the light. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="halftone-amber" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.7216  0 0 0 0 0.1098  6 6 0 0 -6"/>
+    </filter>
+  </svg>
+
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../assets/logo.svg" alt="City Graphics" width="252" height="50">
+        <span class="brand-place">Portland, Oregon</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="../../services/">Services</a></li>
+          <li><a href="../../why-us/">Why Us</a></li>
+          <li><a href="../../portals/">Portals</a></li>
+          <li><a href="../../learn/" aria-current="page">New to Printing?</a></li>
+          <li><a href="../../non-profit/">Non-Profits</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--chrome" href="../../quote/">Get a quote</a>
+      <details class="menu">
+        <summary>
+          <span class="visually-hidden">Menu</span>
+          <svg class="i-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6.5h18M3 12h18M3 17.5h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </summary>
+        <nav class="menu-panel" aria-label="Menu">
+          <ol>
+            <li><a href="../../services/"><span class="menu-num">01</span>Services</a></li>
+            <li><a href="../../why-us/"><span class="menu-num">02</span>Why Us</a></li>
+            <li><a href="../../portals/"><span class="menu-num">03</span>Portals</a></li>
+            <li><a href="../../learn/" aria-current="page"><span class="menu-num">04</span>New to Printing?</a></li>
+            <li><a href="../../quote/"><span class="menu-num">05</span>Get a quote</a></li>
+            <li><a href="../../non-profit/"><span class="menu-num">06</span>Non-Profits</a></li>
+            <li><a href="../../contact/"><span class="menu-num">07</span>Contact</a></li>
+          </ol>
+        </nav>
+      </details>
+    </div>
+    <div class="press-bar" aria-hidden="true"><i></i></div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="masthead masthead--short">
+      <div class="masthead-inner">
+        <div class="masthead-copy">
+          <a class="backlink" href="../../learn/">← All beginner guides</a>
+          <p class="kicker">New to print · 5 min read</p>
+          <h1 class="display display--m">What's in a Print Quote?</h1>
+          <p class="lede">A print quote bundles a few kinds of cost — setup, finishing, paper, and the press run — into one piece price, usually shown across a few quantities.</p>
+          <p class="byline">Reviewed by Greg Mackintosh</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet sheet--page">
+      <div class="prose">
+        <p>A print quote isn't one mystery number — it's a handful of costs bundled together. Setup, cutting or bindery, paper, and the actual press run all get folded into what you usually see as a single price per piece.</p>
+        <blockquote>
+          <p><strong>What this means for your order:</strong> a quote is one price for the whole job, not a menu of charges. Knowing what's baked in helps you compare specs apples-to-apples (same paper, same finishing, same quantity) — not to judge whether a number is good or bad, just to know what you're actually looking at.</p>
+        </blockquote>
+        <p>This article explains what's in a quote and why the price changes with quantity. It's not a guide to picking a printer or judging whether a price is high or low — that depends on far more than any one article could know about your specific job.</p>
+
+        <h2>What's actually inside a quote?</h2>
+        <p>Most print quotes bundle a few things into that one piece price:</p>
+        <ul>
+          <li><strong>Setup.</strong> This covers getting the press ready — loading the right paper, processing your file, setting it up for the exact quantity you're running. It's largely a fixed cost: it takes about the same effort whether you're printing 100 pieces or 1,000.</li>
+          <li><strong>Cutting or bindery.</strong> Trimming to size, folding, scoring — whatever finishing your job needs. This tends to scale with quantity: more pieces, more cutting.</li>
+          <li><strong>Paper.</strong> The actual stock cost for your job.</li>
+          <li><strong>The press cost.</strong> Sometimes called a click rate or a per-square-foot charge — this covers the ink or toner that actually goes down on the page.</li>
+        </ul>
+        <p>Most shops don't show you each of these separately. The more common presentation is a piece price at a few different quantities — say, 250, 500, and 1,000 — so you can see how the per-piece cost shifts as you order more.</p>
+
+        <h2>Why does the price drop when I order more?</h2>
+        <p>Because setup is mostly a fixed cost. Spread that fixed setup cost across more pieces, and the cost per piece goes down.</p>
+        <p>That's why quotes are usually shown as a small table of quantities rather than one flat number — so you can see how that fixed cost plays out at each quantity.</p>
+
+        <h2>Why do quotes look different from shop to shop?</h2>
+        <p>Because how a shop bundles and labels these costs isn't standardized. One shop might call it a "setup fee," another a "RIP fee" (a reference to the raster image processor — the step that translates your file into something the press can actually print). One might itemize cutting separately; another folds it into the piece price entirely. It's just different presentation of the same underlying pieces: setup, finishing, paper, and press cost.</p>
+
+        <h2>What should I do if a quote is hard to read?</h2>
+        <p>Check that it's quoting the job you meant: the right size, quantity, paper, and finishing. If something on the quote doesn't match what you asked for — or you're not sure what a term means — ask. Those are spec questions, and shops answer them all day.</p>
+
+        <h2>What this article can't tell you</h2>
+        <p>This article won't tell you whether a specific quote is a good deal, or help you compare one printer's number against another's. That's not a judgment City Graphics can make in a general guide — pricing depends on specs, timing, materials, and factors specific to your job that no general article can account for. If two quotes look different, the honest first step is checking whether they're actually quoting the same thing: same paper, same finishing, same quantity, same turnaround.</p>
+        <p>Want a quote built from your actual specs, broken down the way this article describes? <a href="../../quote/">Get a quote</a>.</p>
+        <p class="list-lead"><strong>Next steps:</strong></p>
+        <ul>
+          <li><a href="../../learn/how-print-ordering-works/">How print ordering actually works</a></li>
+          <li><a href="../../learn/paper-in-plain-english/">Paper, decoded</a></li>
+          <li><a href="../../learn/what-is-bleed/">What is bleed, and do I need it?</a></li>
+          <li><a href="../../learn/print-ready-pdf/">How do I save a print-ready PDF?</a></li>
+        </ul>
+
+        <section class="sources" aria-labelledby="sources">
+          <h2 id="sources">Sources</h2>
+          <ol>
+            <li><a href="https://www.walsworth.com/blog/factors-that-affect-printing-costs">https://www.walsworth.com/blog/factors-that-affect-printing-costs</a></li>
+            <li><a href="https://www.globalvision.co/glossary/raster-image-processor">https://www.globalvision.co/glossary/raster-image-processor</a></li>
+          </ol>
+        </section>
+
+        <div class="pager">
+          <a class="pager-prev" href="../../learn/how-print-ordering-works/">
+            <p class="label">Previous guide</p>
+            <p class="pager-title">How Print Ordering Actually Works</p>
+          </a>
+          <a class="pager-next" href="../../learn/paper-in-plain-english/">
+            <p class="label">Next guide</p>
+            <p class="pager-title">Paper, Decoded: lb, pt, and gsm in Plain English</p>
+          </a>
+        </div>
+
+        <p class="endnote">Questions about your own project? We're happy to help — no pressure.<a href="../../quote/">Reach out when you're ready</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a class="foot-logo" href="../../index.html"><img src="../../assets/logo.svg" alt="City Graphics home" width="252" height="50" loading="lazy"></a>
+        <address class="foot-address">
+          <p>222 SW 4th Avenue<br>Portland, OR 97204</p>
+          <p>Monday–Friday, 9:30–4:30</p>
+          <p><a href="tel:+15032222942">(503) 222-2942</a><br><a href="tel:+15032229341">Fax (503) 222-9341</a><br><a href="mailto:sendjob@citygi.com">sendjob@citygi.com</a></p>
+        </address>
+      </div>
+      <nav class="foot-nav" aria-labelledby="foot-sitemap">
+        <h2 id="foot-sitemap">Sitemap</h2>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../services/">Services</a></li>
+          <li><a href="../../why-us/">Why Us</a></li>
+          <li><a href="../../portals/">Portals</a></li>
+          <li><a href="../../learn/" aria-current="page">New to Printing?</a></li>
+          <li><a href="../../quote/">Get a quote</a></li>
+          <li><a href="../../non-profit/">Non-Profits</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+        </ul>
+        <p class="foot-privacy"><a href="../../privacy/">Privacy &amp; Your Files</a></p>
+      </nav>
+    </div>
+    <p class="foot-legal">© City Graphics 2026. All rights reserved. Site design, content, and the portal experience are proprietary to City Graphics.</p>
+  </footer>
+</body>
+</html>

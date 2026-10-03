@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="utf-8">
+  <!-- live-send --><script src="../../site-config.js"></script><script src="../../runtime/live-send.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>What Is Bleed, and Do I Really Need It? — City Graphics</title>
+  <meta name="description" content="Bleed is extra image that extends past the edge of your design so that, once it's trimmed, the color runs all the way to the edge of the paper instead of leaving a thin white line.">
+  <meta name="theme-color" content="#101412">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23101412'/%3E%3Ccircle cx='16' cy='16' r='7.5' fill='none' stroke='%23ffb81c' stroke-width='2.4'/%3E%3Cpath d='M16 4v24M4 16h24' stroke='%23ffb81c' stroke-width='2.4'/%3E%3C/svg%3E">
+  <link rel="preload" href="../../fonts/f2-k3kQo8UDI-1M0wlSfdnoLg.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <link rel="stylesheet" href="../../pages.css">
+  <script src="../../pages.js" defer></script>
+  <style>
+    /* Guide pages: the article's small print. */
+    .prose .list-lead + ul { margin-top: .55em; }
+
+    /* Sources: small print under the press colour bar. */
+    .prose > .sources { margin-top: clamp(2.75rem, 5vw, 3.75rem); }
+    .sources { position: relative; padding-top: 1.6rem; }
+    .sources::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--cyan) 0 25%, var(--magenta) 0 50%, var(--yellow) 0 75%, var(--k-patch) 0);
+    }
+    .prose .sources h2 {
+      margin: 0;
+      font-size: .75rem;
+      font-weight: 700;
+      font-stretch: 100%;
+      letter-spacing: .2em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+    .prose .sources ol { margin-top: .9rem; }
+    .prose .sources li + li { margin-top: .4em; }
+
+    .endnote a { margin-left: .3em; }
+
+    @media (forced-colors: active) {
+      .sources::before { forced-color-adjust: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Halftone screen: turns a red ramp + green dot field into amber dots that shrink toward the edge of the light. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="halftone-amber" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.7216  0 0 0 0 0.1098  6 6 0 0 -6"/>
+    </filter>
+  </svg>
+
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../assets/logo.svg" alt="City Graphics" width="252" height="50">
+        <span class="brand-place">Portland, Oregon</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="../../services/">Services</a></li>
+          <li><a href="../../why-us/">Why Us</a></li>
+          <li><a href="../../portals/">Portals</a></li>
+          <li><a href="../../learn/" aria-current="page">New to Printing?</a></li>
+          <li><a href="../../non-profit/">Non-Profits</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--chrome" href="../../quote/">Get a quote</a>
+      <details class="menu">
+        <summary>
+          <span class="visually-hidden">Menu</span>
+          <svg class="i-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6.5h18M3 12h18M3 17.5h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </summary>
+        <nav class="menu-panel" aria-label="Menu">
+          <ol>
+            <li><a href="../../services/"><span class="menu-num">01</span>Services</a></li>
+            <li><a href="../../why-us/"><span class="menu-num">02</span>Why Us</a></li>
+            <li><a href="../../portals/"><span class="menu-num">03</span>Portals</a></li>
+            <li><a href="../../learn/" aria-current="page"><span class="menu-num">04</span>New to Printing?</a></li>
+            <li><a href="../../quote/"><span class="menu-num">05</span>Get a quote</a></li>
+            <li><a href="../../non-profit/"><span class="menu-num">06</span>Non-Profits</a></li>
+            <li><a href="../../contact/"><span class="menu-num">07</span>Contact</a></li>
+          </ol>
+        </nav>
+      </details>
+    </div>
+    <div class="press-bar" aria-hidden="true"><i></i></div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="masthead masthead--short">
+      <div class="masthead-inner">
+        <div class="masthead-copy">
+          <a class="backlink" href="../../learn/">← All beginner guides</a>
+          <p class="kicker">New to print · 4 min read</p>
+          <h1 class="display display--m">What Is Bleed, and Do I Really Need It?</h1>
+          <p class="lede">Bleed is extra image that extends past the edge of your design so that, once it's trimmed, the color runs all the way to the edge of the paper instead of leaving a thin white line.</p>
+          <p class="byline">Reviewed by Greg Mackintosh</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet sheet--page">
+      <div class="prose">
+        <p>Bleed is extra image, printed past the edge of your design on purpose, so that after trimming, the color runs all the way to the edge of the paper. Skip it on a design that's meant to be edge-to-edge, and you can end up with a thin white line where you didn't want one.</p>
+        <blockquote>
+          <p><strong>What this means for your order:</strong> if any part of your design — a background color, a photo, an accent — is meant to touch the edge of the paper, it needs to actually extend past that edge in your file. Otherwise, the trim can leave a sliver of white paper showing where color should be.</p>
+        </blockquote>
+
+        <h2>Why can't a printer just print to the edge?</h2>
+        <p>Here's the mechanical reason bleed exists at all: a printing press can't print all the way to the edge of a sheet. It needs a white border around what it prints — that's just how the presses work. So if you want your final piece to have color running edge-to-edge, the shop has to print it bigger than the finished size, and then cut it down. The paper runs to the edge of the trimmed piece because the extra margin — the bleed — gave the cutter something to trim into.</p>
+
+        <h2>What happens if I skip it?</h2>
+        <p>If you run an image without bleed and then trim it to size, because of the slack variance in a run, you might get a white line at the edge of the page instead of having the color go to the edge of the sheet.</p>
+        <p>Nothing printed incorrectly — the design simply didn't leave any room for that normal variance in a trim.</p>
+
+        <h2>How much bleed do I actually need?</h2>
+        <p>This varies by shop and by job — a common allowance for a lot of standard printing is around an eighth of an inch (0.125"), though large-format jobs (banners, posters) often want more. Rather than treat one number as gospel, the safest move is checking your specific printer's spec before you export your file, since requirements do shift shop to shop and product to product.</p>
+
+        <h2>Do I need bleed if my design has a white border already?</h2>
+        <p>Not really — if nothing in your design is meant to touch the very edge of the paper, bleed isn't doing much for you. Bleed matters specifically for edge-to-edge color or imagery. A design with an intentional margin around it is much more forgiving of small trim variance, because there's no color at the edge to line up in the first place.</p>
+
+        <h2>Is bleed just a postcard or business card thing?</h2>
+        <p>No — it applies to any product where color is meant to run to the edge of the finished piece, not just the small stuff. Flyers, brochures, posters, banners — anything with a full-bleed background or photo needs the same extra margin before trimming. Large-format work (think banners and posters) often wants a bigger bleed allowance than a standard postcard or card. The concept doesn't change with size — only the exact measurement might.</p>
+
+        <h2>What this article can't tell you</h2>
+        <p>The exact bleed measurement your shop wants, and how they want it built into your file (a bleed guide in your design software, a specific export setting), varies by shop and by software. If in doubt, put in an eighth of an inch (0.125") of bleed — bleed can always be extended, but it can't be extended if it doesn't exist. A check with your printer will give you a definitive answer.</p>
+        <p>Not sure if your file has enough bleed for the size you're ordering? <a href="../../quote/">Get a quote</a> and we'll walk through what your specific file needs.</p>
+        <p class="list-lead"><strong>Next steps:</strong></p>
+        <ul>
+          <li><a href="../../learn/print-ready-pdf/">How do I save a print-ready PDF?</a></li>
+          <li><a href="../../learn/resolution-dpi-plain-english/">Resolution and DPI in plain English</a></li>
+          <li><a href="../../learn/how-print-ordering-works/">How print ordering actually works</a></li>
+          <li><a href="../../learn/whats-in-a-print-quote/">What's in a print quote?</a></li>
+        </ul>
+
+        <section class="sources" aria-labelledby="sources">
+          <h2 id="sources">Sources</h2>
+          <ol>
+            <li><a href="https://helpx.adobe.com/indesign/desktop/print/page-set-up-and-printer-marks/print-bleed-and-slug-areas.html">https://helpx.adobe.com/indesign/desktop/print/page-set-up-and-printer-marks/print-bleed-and-slug-areas.html</a></li>
+            <li><a href="https://www.uprinting.com/blog/preparing-your-design-files/">https://www.uprinting.com/blog/preparing-your-design-files/</a></li>
+          </ol>
+        </section>
+
+        <div class="pager">
+          <a class="pager-prev" href="../../learn/paper-in-plain-english/">
+            <p class="label">Previous guide</p>
+            <p class="pager-title">Paper, Decoded: lb, pt, and gsm in Plain English</p>
+          </a>
+          <a class="pager-next" href="../../learn/resolution-dpi-plain-english/">
+            <p class="label">Next guide</p>
+            <p class="pager-title">Resolution and DPI, in Plain English</p>
+          </a>
+        </div>
+
+        <p class="endnote">Questions about your own project? We're happy to help — no pressure.<a href="../../quote/">Reach out when you're ready</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a class="foot-logo" href="../../index.html"><img src="../../assets/logo.svg" alt="City Graphics home" width="252" height="50" loading="lazy"></a>
+        <address class="foot-address">
+          <p>222 SW 4th Avenue<br>Portland, OR 97204</p>
+          <p>Monday–Friday, 9:30–4:30</p>
+          <p><a href="tel:+15032222942">(503) 222-2942</a><br><a href="tel:+15032229341">Fax (503) 222-9341</a><br><a href="mailto:sendjob@citygi.com">sendjob@citygi.com</a></p>
+        </address>
+      </div>
+      <nav class="foot-nav" aria-labelledby="foot-sitemap">
+        <h2 id="foot-sitemap">Sitemap</h2>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../services/">Services</a></li>
+          <li><a href="../../why-us/">Why Us</a></li>
+          <li><a href="../../portals/">Portals</a></li>
+          <li><a href="../../learn/" aria-current="page">New to Printing?</a></li>
+          <li><a href="../../quote/">Get a quote</a></li>
+          <li><a href="../../non-profit/">Non-Profits</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+        </ul>
+        <p class="foot-privacy"><a href="../../privacy/">Privacy &amp; Your Files</a></p>
+      </nav>
+    </div>
+    <p class="foot-legal">© City Graphics 2026. All rights reserved. Site design, content, and the portal experience are proprietary to City Graphics.</p>
+  </footer>
+</body>
+</html>

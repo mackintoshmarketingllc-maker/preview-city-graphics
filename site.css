@@ -1,0 +1,969 @@
+/* City Graphics: design layer over the scroll stage.
+   The footage is screen-print and riso. The type layer borrows the press room's own notation:
+   halftone ink patches behind the copy, a CMYK colour-bar slug, a registration mark and crop marks. */
+
+:root {
+  --k: #101412;
+  --paper: #f4f1e8;
+  --amber: #ffb81c;
+  --green: #008344;
+  --cyan: #00aeef;
+  --magenta: #ec008c;
+  --yellow: #fff200;
+
+  --text-2: rgba(244, 241, 232, .86);
+  --line: rgba(244, 241, 232, .45);
+  --error: #ff5cb4;               /* magenta lifted for small text over the dark film */
+
+  --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --gutter: clamp(1.25rem, 5vw, 5.5rem);
+  --chrome-h: 5.25rem;
+  --dot: 6px;
+  --ease: cubic-bezier(.16, 1, .3, 1);
+
+  --stage-bg: #101412;
+  color-scheme: dark;
+  scrollbar-color: rgba(244, 241, 232, .28) var(--k);
+  scrollbar-width: thin;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html { background: var(--k); }
+
+body {
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--paper);
+  background: var(--k);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--amber); color: var(--k); }
+
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* Until stage.js decides between the stage and the static sections, keep timed copy out of sight. */
+html:not(.js-stage):not(.rm):not(.no-js):not(.stage-failed) .copy,
+html:not(.js-stage):not(.rm):not(.no-js):not(.stage-failed) .cue { opacity: 0; }
+
+.js-stage [data-copy-layer] { overflow: hidden; }
+
+/* ------------------------------------------------------------------ press bar (scroll progress) */
+
+.press-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  height: 3px;
+  background: rgba(244, 241, 232, .1);
+  pointer-events: none;
+}
+.press-bar i {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg,
+    var(--cyan) 0 22px, transparent 22px 24px,
+    var(--magenta) 24px 46px, transparent 46px 48px,
+    var(--yellow) 48px 70px, transparent 70px 72px,
+    var(--k) 72px 94px, transparent 94px 96px);
+  clip-path: inset(0 calc((1 - var(--progress, 0)) * 100%) 0 0);
+}
+.rm .press-bar, .no-js .press-bar, .stage-failed .press-bar { display: none; }
+
+/* ------------------------------------------------------------------ chrome */
+
+.chrome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  column-gap: 1.75rem;
+  padding: 1.25rem var(--gutter);
+  padding-top: calc(1.25rem + env(safe-area-inset-top, 0px));
+}
+.chrome::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 9rem;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(16, 20, 18, .62), rgba(16, 20, 18, .26) 45%, rgba(16, 20, 18, 0));
+}
+
+.brand {
+  display: block;
+  color: var(--paper);
+  line-height: 0;
+  border-radius: 2px;
+}
+.brand svg {
+  display: block;
+  height: 1.9rem;
+  width: auto;
+  aspect-ratio: 254 / 50;
+}
+
+.slug {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  min-width: 0;
+  min-height: 1.75rem;
+  margin: 0;
+  color: var(--amber);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.slug::before {
+  content: "";
+  flex: none;
+  width: 1px;
+  height: 1.5rem;
+  margin-right: 1rem;
+  background: rgba(244, 241, 232, .24);
+}
+.slug [data-section-label] {
+  display: inline-block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: left center;
+}
+
+/* The registration mark turns a notch with every scene, like a press being brought into register. */
+.reg {
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: rgba(244, 241, 232, .72);
+  transition: rotate 1.1s var(--ease);
+}
+html[data-active-scene="1"] .reg { rotate: 45deg; }
+html[data-active-scene="2"] .reg { rotate: 90deg; }
+html[data-active-scene="3"] .reg { rotate: 135deg; }
+html[data-active-scene="4"] .reg { rotate: 180deg; }
+html[data-active-scene="5"] .reg { rotate: 225deg; }
+html[data-active-scene="6"] .reg { rotate: 270deg; }
+html[data-active-scene="7"] .reg { rotate: 315deg; }
+
+/* Section label re-inks on each scene change (alternating names restart the animation). */
+html[data-active-scene="0"] .slug [data-section-label],
+html[data-active-scene="2"] .slug [data-section-label],
+html[data-active-scene="4"] .slug [data-section-label],
+html[data-active-scene="6"] .slug [data-section-label] { animation: slug-ink-a .8s var(--ease) both; }
+html[data-active-scene="1"] .slug [data-section-label],
+html[data-active-scene="3"] .slug [data-section-label],
+html[data-active-scene="5"] .slug [data-section-label],
+html[data-active-scene="7"] .slug [data-section-label] { animation: slug-ink-b .8s var(--ease) both; }
+@keyframes slug-ink-a { from { opacity: 0; filter: blur(6px); transform: scaleX(1.35); } }
+@keyframes slug-ink-b { from { opacity: 0; filter: blur(6px); transform: scaleX(1.35); } }
+
+/* ------------------------------------------------------------------ site navigation
+   The rest of the site rides in the chrome's dark top band, set quieter than the slug: paper links
+   with an amber rule that prints in on hover. Below 80rem the links fold into a numbered menu
+   sheet that feeds down over the film. */
+
+.nav ul {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 1.45vw, 1.6rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav a {
+  position: relative;
+  display: block;
+  padding: .75rem 0;
+  color: var(--text-2);
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(16, 20, 18, .7);
+  transition: color .2s;
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: .3rem;
+  height: 2px;
+  background: var(--amber);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .4s var(--ease);
+}
+.nav a:hover { color: var(--paper); }
+.nav a:hover::after { transform: scaleX(1); }
+
+.menu { display: none; }
+.menu > summary {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 2px;
+  background: rgba(16, 20, 18, .35);
+  box-shadow: inset 0 0 0 1px rgba(244, 241, 232, .42);
+  color: var(--paper);
+  cursor: pointer;
+  list-style: none;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow .2s, color .2s;
+}
+.menu > summary::-webkit-details-marker { display: none; }
+.menu > summary::marker { content: ""; }
+.menu > summary:hover { box-shadow: inset 0 0 0 1px var(--paper); }
+.menu > summary:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+.menu > summary svg { display: block; width: 1.25rem; height: 1.25rem; }
+.menu .i-close { display: none; }
+.menu[open] .i-open { display: none; }
+.menu[open] .i-close { display: block; }
+.menu[open] > summary { color: var(--amber); box-shadow: inset 0 0 0 1px var(--amber); }
+
+/* The sheet fills the screen behind the chrome's own row, so the brand, scene slug and quote
+   button stay on top of it. */
+.menu-panel {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: calc(var(--chrome-h) + env(safe-area-inset-top, 0px) + .5rem) var(--gutter) calc(3rem + env(safe-area-inset-bottom, 0px));
+  background: var(--k);
+  pointer-events: auto;
+}
+.menu-panel ol {
+  max-width: 34rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.menu-panel li:first-child a { border-top: 1px solid rgba(244, 241, 232, .14); }
+.menu-panel a {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 0 .9rem;
+  border-bottom: 1px solid rgba(244, 241, 232, .14);
+  color: var(--paper);
+  font-size: clamp(1.875rem, 8vw, 2.75rem);
+  font-weight: 900;
+  font-stretch: 70%;
+  line-height: 1;
+  text-decoration: none;
+  transition: color .2s;
+}
+.menu-panel a:hover { color: var(--amber); }
+.menu-num {
+  flex: none;
+  min-width: 1.85rem;
+  color: var(--amber);
+  font-size: .75rem;
+  font-weight: 700;
+  font-stretch: 100%;
+  letter-spacing: .16em;
+  font-variant-numeric: tabular-nums;
+}
+.menu-panel .cmyk { display: flex; width: max-content; margin-top: 1.75rem; }
+.menu-panel .cmyk i { width: 1.4rem; height: 5px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* The menu feeds down like a sheet coming off the press. */
+  .menu[open] .menu-panel { animation: sheet-feed .55s var(--ease) both; }
+}
+@keyframes sheet-feed { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+
+@media (max-width: 1279px) {
+  .nav { display: none; }
+  .menu { display: block; margin-left: -.75rem; }
+  html:has(.chrome .menu[open]) { overflow: hidden; }
+}
+
+/* ------------------------------------------------------------------ links and buttons */
+
+a:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 3.25rem;
+  padding: 0 1.5rem;
+  border: 0;
+  border-radius: 2px;
+  background: var(--amber);
+  color: var(--k);
+  font: 700 1rem/1 var(--font);
+  font-stretch: 100%;
+  letter-spacing: .005em;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 var(--cyan), 0 0 0 0 var(--magenta);
+  transition: box-shadow .35s var(--ease), transform .35s var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+/* Hover knocks the plates out of register: cyan and magenta slip out from under the amber. */
+.btn:hover { box-shadow: -3px -2px 0 0 var(--cyan), 3px 2px 0 0 var(--magenta); }
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: -1px 0 0 0 var(--cyan), 1px 0 0 0 var(--magenta);
+  transition-duration: .08s;
+}
+.btn:focus-visible { outline: 2px solid var(--paper); outline-offset: 4px; }
+
+.btn--chrome {
+  min-height: 2.75rem;
+  padding: 0 1.15rem;
+  font-size: .9375rem;
+  transition: box-shadow .35s var(--ease), transform .35s var(--ease), opacity .4s var(--ease);
+}
+.in-finale .btn--chrome {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .4s var(--ease), visibility 0s linear .4s;
+}
+
+/* ------------------------------------------------------------------ copy typography */
+
+/* Kickers run as the slug line at the foot of each block, the way a press sheet carries its job
+   information under the trim, so every headline leads its own block. */
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  margin: 1.6rem 0 0;
+  color: var(--amber);
+  font-size: .75rem;
+  font-weight: 700;
+  font-stretch: 100%;
+  letter-spacing: .2em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(16, 20, 18, .6);
+}
+
+/* The recurring divider: a press colour bar, one patch per process ink. */
+.cmyk { display: inline-flex; flex: none; gap: 2px; }
+.cmyk i { display: block; width: .7rem; height: 4px; }
+.cmyk i:nth-child(1) { background: var(--cyan); }
+.cmyk i:nth-child(2) { background: var(--magenta); }
+.cmyk i:nth-child(3) { background: var(--yellow); }
+.cmyk i:nth-child(4) { background: var(--k); box-shadow: inset 0 0 0 1px rgba(244, 241, 232, .55); }
+
+.headline {
+  margin: 0 0 1.35rem;
+  color: var(--paper);
+  font-size: min(clamp(2.5rem, 1.35rem + 3.2vw, 4.75rem), 10.5vh);
+  font-weight: 900;
+  font-stretch: 70%;
+  line-height: .92;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+  text-shadow: 0 1px 2px rgba(16, 20, 18, .45);
+}
+.headline--hero {
+  font-size: min(clamp(3.25rem, 1.5rem + 4.4vw, 6rem), 11.5vh);
+  line-height: .9;
+}
+
+.body {
+  max-width: 40ch;
+  margin: 0;
+  color: var(--text-2);
+  font-size: clamp(1rem, .93rem + .28vw, 1.1875rem);
+  line-height: 1.55;
+  text-wrap: pretty;
+  text-shadow: 0 1px 2px rgba(16, 20, 18, .5);
+}
+
+.actions { margin: 1.85rem 0 0; }
+
+/* Smear: keep the engine's stretch and blur, but hold tracking steady so the block never reflows. */
+.js-stage .headline[data-fx="smear"],
+.js-stage .headline[data-fx="smear"].is-active { letter-spacing: -.01em; }
+.js-stage .copy--right .headline[data-fx="smear"] { transform-origin: right center; }
+
+/* ------------------------------------------------------------------ halftone ink patch
+   Red channel: a soft-edged ramp. Green channel: a 45° screen of soft dots.
+   The #halftone filter keeps a pixel where red + green > 1, so the patch is solid where the ramp
+   is full and breaks into shrinking halftone dots toward its edges, like the footage's own gradients. */
+
+.halftone {
+  --fade-t: 7rem;
+  --fade-b: 7rem;
+  --fade-l: 11rem;
+  --fade-r: 11rem;
+  background-image:
+    radial-gradient(closest-side, #0f0, #000),
+    radial-gradient(closest-side, #0f0, #000),
+    linear-gradient(180deg, #000 0, #f00 var(--fade-t), #f00 calc(100% - var(--fade-b)), #000 100%),
+    linear-gradient(90deg, #000 0, #f00 var(--fade-l), #f00 calc(100% - var(--fade-r)), #000 100%);
+  background-size: var(--dot) var(--dot), var(--dot) var(--dot), 100% 100%, 100% 100%;
+  background-position: 0 0, calc(var(--dot) / 2) calc(var(--dot) / 2), 0 0, 0 0;
+  background-repeat: repeat, repeat, no-repeat, no-repeat;
+  background-blend-mode: lighten, lighten, multiply, normal;
+  filter: url(#halftone);
+}
+
+.scrim, .trim { display: none; }
+
+/* ------------------------------------------------------------------ copy blocks on the stage */
+
+.js-stage .copy {
+  position: absolute;
+  box-sizing: border-box;
+}
+.js-stage .copy > [data-scene] { position: relative; }
+.js-stage .copy > .scrim,
+.js-stage .copy > .trim {
+  display: block;
+  position: absolute;
+  pointer-events: none;
+}
+
+.js-stage .copy > .scrim { transition: opacity .9s var(--ease), visibility 0s linear .9s; }
+.js-stage .copy > .scrim.is-active { opacity: .88; transition-delay: 0s; }
+
+/* Hero: supporting lines follow the fragment headline in on first load. */
+.js-stage .copy--s0 > .body.is-active { transition-delay: .4s; }
+.js-stage .copy--s0 > .actions.is-active { transition-delay: .55s; }
+.js-stage .copy--s0 > .kicker.is-active { transition-delay: .75s; }
+
+/* Finale: the patch prints first, then the sheet, then the crop marks. */
+.js-stage .finale.is-active { transition-delay: .12s; }
+.js-stage .copy > .trim.is-active { transition-delay: .4s; }
+
+.js-stage .finale {
+  box-sizing: border-box;
+  max-height: calc(100vh - var(--chrome-h) - 3rem);
+  margin: -4px;
+  padding: 4px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  pointer-events: auto;
+}
+
+/* Crop marks around the quote sheet. */
+.js-stage .copy > .trim {
+  --M: 1.6rem;
+  --gap: .45rem;
+  --L: calc(var(--M) - var(--gap));
+  --c: rgba(244, 241, 232, .5);
+  inset: calc(-1 * var(--M) - 1.1rem);
+  background:
+    linear-gradient(var(--c), var(--c)) left 0 top var(--M) / var(--L) 1px,
+    linear-gradient(var(--c), var(--c)) left var(--M) top 0 / 1px var(--L),
+    linear-gradient(var(--c), var(--c)) right 0 top var(--M) / var(--L) 1px,
+    linear-gradient(var(--c), var(--c)) right var(--M) top 0 / 1px var(--L),
+    linear-gradient(var(--c), var(--c)) left 0 bottom var(--M) / var(--L) 1px,
+    linear-gradient(var(--c), var(--c)) left var(--M) bottom 0 / 1px var(--L),
+    linear-gradient(var(--c), var(--c)) right 0 bottom var(--M) / var(--L) 1px,
+    linear-gradient(var(--c), var(--c)) right var(--M) bottom 0 / 1px var(--L);
+  background-repeat: no-repeat;
+}
+
+/* Scroll cue, only before the first scroll. */
+.cue { display: none; }
+.js-stage .cue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+  left: 50%;
+  bottom: 1.75rem;
+  translate: -50% 0;
+  color: rgba(244, 241, 232, .8);
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(16, 20, 18, .9);
+}
+.cue i {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 2.75rem;
+  overflow: hidden;
+  background: rgba(244, 241, 232, .28);
+}
+.cue i::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 40%;
+  background: var(--amber);
+  animation: cue-run 1.8s var(--ease) infinite;
+}
+@keyframes cue-run {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(250%); }
+}
+
+/* Desktop and tablet: copy sits in the footage's negative space, left or right. */
+@media (min-width: 761px) {
+  .js-stage .copy {
+    top: calc(50% + 1.75rem);
+    translate: 0 -50%;
+  }
+  .js-stage .copy--left { left: var(--gutter); width: var(--w, min(36rem, 38vw)); }
+  .js-stage .copy--right { right: var(--gutter); width: var(--w, min(33rem, 34vw)); }
+
+  .copy--s0 { --w: min(42rem, 44vw); }
+  .copy--s3 { --w: min(28rem, 30vw); }
+  .copy--s7 { --w: min(28rem, 30vw); }
+  .copy--finale { --w: min(32rem, 36vw); }
+
+  /* Print lands with paper filling the lower left, so its copy hangs from the top. */
+  .js-stage .copy--s2 {
+    top: calc(var(--chrome-h) + 7vh);
+    translate: none;
+  }
+
+  .js-stage .copy > .scrim {
+    top: -6rem;
+    bottom: -6rem;
+    --fade-t: 7rem;
+    --fade-b: 7rem;
+  }
+  .js-stage .copy--left > .scrim {
+    left: calc(-1 * var(--gutter) - 2px);
+    right: -9rem;
+    --fade-l: 0px;
+    --fade-r: 11rem;
+  }
+  .js-stage .copy--right > .scrim {
+    right: calc(-1 * var(--gutter) - 2px);
+    left: -9rem;
+    --fade-l: 11rem;
+    --fade-r: 0px;
+  }
+}
+
+/* Wide but short screens (landscape tablets, small laptops). */
+@media (min-width: 761px) and (max-height: 600px) {
+  .kicker { margin-top: .9rem; }
+  .headline { margin-bottom: .8rem; }
+  .body { font-size: .9375rem; line-height: 1.45; }
+  .actions { margin-top: 1rem; }
+  .js-stage .copy > .scrim { top: -4rem; bottom: -4rem; --fade-t: 4.5rem; --fade-b: 4.5rem; }
+  .js-stage .cue { display: none; }
+}
+
+/* ------------------------------------------------------------------ finale: the quote sheet */
+
+.headline--finale { margin-bottom: 1.1rem; }
+
+.finale .body { max-width: 42ch; }
+
+.contact,
+.note {
+  max-width: 44ch;
+  margin: .65rem 0 0;
+  color: var(--text-2);
+  font-size: clamp(.9375rem, .9rem + .2vw, 1.0625rem);
+  line-height: 1.5;
+  text-shadow: 0 1px 2px rgba(16, 20, 18, .5);
+}
+.contact a {
+  color: var(--paper);
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-color: var(--amber);
+  text-decoration-thickness: 2px;
+  text-underline-offset: .22em;
+  transition: color .2s;
+}
+.contact a:hover { color: var(--amber); }
+.note strong { color: var(--paper); font-weight: 700; }
+.more { margin: .5rem 0 0; color: var(--text-2); font-size: .8125rem; line-height: 1.5; }
+.more a { color: var(--paper); text-decoration: underline; text-decoration-color: var(--amber); text-underline-offset: .2em; }
+.more a:hover { color: var(--amber); }
+.note::before {
+  content: "";
+  display: inline-block;
+  width: .55rem;
+  height: .55rem;
+  margin-right: .55rem;
+  background: var(--green);
+  vertical-align: .02em;
+}
+
+.quote { margin-top: 1.75rem; }
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: .9rem .85rem;
+}
+.field { display: grid; gap: .45rem; min-width: 0; }
+.field label {
+  color: var(--paper);
+  font-size: .8125rem;
+  font-weight: 700;
+  font-stretch: 100%;
+  line-height: 1.25;
+}
+.opt {
+  margin-left: .25em;
+  color: rgba(244, 241, 232, .62);
+  font-weight: 400;
+}
+
+/* Frosted fields over the last frame. */
+.field--wide { grid-column: 1 / -1; }
+.field .hint { color: rgba(244, 241, 232, .62); font-size: .75rem; line-height: 1.35; }
+.field textarea { min-height: 4.75rem; resize: vertical; line-height: 1.4; }
+.field input,
+.field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 3rem;
+  margin: 0;
+  padding: .7rem .85rem;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: rgba(244, 241, 232, .075);
+  color: var(--paper);
+  font: 400 1rem/1.25 var(--font);
+  caret-color: var(--amber);
+  -webkit-backdrop-filter: blur(14px) saturate(1.25);
+  backdrop-filter: blur(14px) saturate(1.25);
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color .2s, background-color .2s;
+}
+.field input:hover,
+.field textarea:hover { border-color: rgba(244, 241, 232, .65); }
+.field input:focus,
+.field textarea:focus {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+  border-color: var(--amber);
+  background-color: rgba(244, 241, 232, .11);
+}
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"],
+.field input:user-invalid,
+.field textarea:user-invalid { border-color: var(--error); }
+
+/* The browser's own message, printed under its field by quote/page.js. */
+.field-error {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  margin: 0;
+  color: var(--error);
+  font-size: .8125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-shadow: 0 1px 2px rgba(16, 20, 18, .6);
+}
+.field-error::before {
+  content: "";
+  flex: none;
+  width: .42rem;
+  height: .42rem;
+  background: currentColor;
+  transform: translateY(-.08em) rotate(45deg);
+}
+.field-error:empty { display: none; }
+.field input:-webkit-autofill {
+  -webkit-text-fill-color: var(--paper);
+  box-shadow: inset 0 0 0 100px rgb(31, 36, 33);
+  caret-color: var(--amber);
+}
+
+.btn--submit {
+  width: 100%;
+  min-height: 3.4rem;
+  margin-top: 1.15rem;
+  font-size: 1.0625rem;
+}
+/* Sending: the button runs stripes like paper feeding through, as on the full quote form. */
+.btn[aria-busy="true"] {
+  cursor: progress;
+  background-image: repeating-linear-gradient(-45deg, rgba(16, 20, 18, .14) 0 8px, transparent 8px 16px);
+  background-size: 22.63px 100%;
+  animation: feed-stripes .7s linear infinite;
+}
+@keyframes feed-stripes { to { background-position: 22.63px 0; } }
+
+/* Hand-off to the full form on quote/ for files and the rest of the specs. */
+.full-form {
+  max-width: 46ch;
+  margin: .95rem 0 0;
+  color: var(--text-2);
+  font-size: .875rem;
+  line-height: 1.45;
+  text-shadow: 0 1px 2px rgba(16, 20, 18, .5);
+}
+.full-form a {
+  color: var(--paper);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--amber);
+  text-decoration-thickness: 2px;
+  text-underline-offset: .22em;
+  transition: color .2s;
+}
+.full-form a:hover { color: var(--amber); }
+
+/* Live status line (role="status"), written by quote/page.js. */
+.form-status {
+  display: flex;
+  align-items: baseline;
+  gap: .7rem;
+  margin: 1rem 0 0;
+  padding: .8rem 1rem;
+  border-radius: 2px;
+  background: rgba(255, 184, 28, .14);
+  box-shadow: inset 0 0 0 1px rgba(255, 184, 28, .55);
+  color: var(--paper);
+  font-size: .875rem;
+  line-height: 1.45;
+  -webkit-backdrop-filter: blur(14px) saturate(1.25);
+  backdrop-filter: blur(14px) saturate(1.25);
+}
+.form-status::before {
+  content: "";
+  flex: none;
+  width: .55rem;
+  height: .55rem;
+  background: var(--amber);
+  transform: translateY(-.05em);
+}
+.form-status:empty { display: none; }
+.form-status[data-state="success"] {
+  background: rgba(0, 131, 68, .2);
+  box-shadow: inset 0 0 0 1px rgba(0, 131, 68, .75);
+}
+.form-status[data-state="success"]::before { background: var(--green); }
+.form-status[data-state="error"] {
+  background: rgba(236, 0, 140, .14);
+  box-shadow: inset 0 0 0 1px rgba(236, 0, 140, .6);
+}
+.form-status[data-state="error"]::before { background: var(--magenta); transform: translateY(-.05em) rotate(45deg); }
+.form-status a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--amber);
+  text-underline-offset: .2em;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .form-status[data-state="pending"]::before { animation: ink-pulse 1s var(--ease) infinite alternate; }
+}
+@keyframes ink-pulse { to { opacity: .25; } }
+
+/* Once the shop returns a request number, the ticket takes the form's place. */
+.finale .confirm {
+  display: grid;
+  justify-items: start;
+  gap: 1.1rem;
+  margin-top: 1.75rem;
+}
+.confirm:focus { outline: none; }
+.confirm h2 {
+  margin: 0;
+  color: var(--paper);
+  font-size: clamp(2rem, 1.45rem + 1.8vw, 3rem);
+  font-weight: 900;
+  font-stretch: 70%;
+  line-height: .92;
+  text-shadow: 0 1px 2px rgba(16, 20, 18, .45);
+  transform-origin: left center;
+}
+.confirm-id { margin: 0; }
+.confirm-id strong {
+  display: inline-block;
+  padding: .65rem .9rem .6rem;
+  background: var(--paper);
+  color: var(--k);
+  font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: .08em;
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+.confirm-note {
+  max-width: 44ch;
+  margin: 0;
+  color: var(--text-2);
+  font-size: .9375rem;
+  line-height: 1.5;
+  text-shadow: 0 1px 2px rgba(16, 20, 18, .5);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .confirm h2 { animation: slug-ink-a .9s var(--ease) .1s both; }
+}
+
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* Honeypot: present for bots, gone for people, screen readers and the tab order. */
+.hp,
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ------------------------------------------------------------------ mobile: lower third */
+
+@media (max-width: 760px) {
+  :root { --chrome-h: 4.75rem; --dot: 5px; }
+
+  .chrome {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas: "brand cta menu" "slug cta menu";
+    row-gap: .5rem;
+    column-gap: 1rem;
+    padding: .95rem var(--gutter) .75rem;
+    padding-top: calc(.95rem + env(safe-area-inset-top, 0px));
+  }
+  .brand { grid-area: brand; justify-self: start; }
+  .brand svg { height: 1.45rem; }
+  .slug {
+    grid-area: slug;
+    min-height: 0;
+    gap: .5rem;
+    font-size: .6875rem;
+    letter-spacing: .16em;
+  }
+  .slug::before { display: none; }
+  .reg { width: .875rem; height: .875rem; }
+  .btn--chrome { grid-area: cta; min-height: 2.6rem; padding: 0 1rem; font-size: .875rem; }
+  .menu { grid-area: menu; margin-left: -.35rem; }
+  .menu > summary { width: 2.6rem; height: 2.6rem; }
+
+  .js-stage .copy {
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: calc(1.75rem + env(safe-area-inset-bottom, 0px));
+  }
+  .js-stage .copy > .scrim {
+    left: calc(-1 * var(--gutter));
+    right: calc(-1 * var(--gutter));
+    top: -9rem;
+    bottom: calc(-1.75rem - env(safe-area-inset-bottom, 0px) - 2px);
+    --fade-l: 0px;
+    --fade-r: 0px;
+    --fade-t: 10rem;
+    --fade-b: 0px;
+  }
+  .js-stage .copy--finale > .scrim { top: -6rem; --fade-t: 7rem; }
+  .js-stage .copy > .trim { display: none; }
+  .js-stage .cue { display: none; }
+
+  .kicker { margin-top: 1.15rem; font-size: .6875rem; }
+  .headline { margin-bottom: 1rem; font-size: clamp(2.1rem, 9.4vw, 2.75rem); }
+  .headline--hero { font-size: clamp(2.5rem, 11.4vw, 3.25rem); }
+  .body { font-size: 1rem; line-height: 1.5; }
+  .actions { margin-top: 1.35rem; }
+
+  .js-stage .finale {
+    max-height: calc(100vh - var(--chrome-h) - 3rem);
+    max-height: calc(100svh - var(--chrome-h) - 3rem - env(safe-area-inset-bottom, 0px));
+  }
+  .headline--finale { font-size: clamp(2rem, 8.6vw, 2.5rem); }
+  .finale .body, .contact, .note { font-size: .9375rem; }
+  .quote { margin-top: 1.25rem; }
+  .fields { gap: .75rem .65rem; }
+  .btn--submit { margin-top: .9rem; }
+}
+
+@media (max-width: 559px) {
+  .fields { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ------------------------------------------------------------------ reduced motion: static sections */
+
+.rm .copy, .rm .cue, .rm .scrim, .rm .trim { display: none; }
+.rm .rm-scene {
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: calc(var(--chrome-h) + 2rem);
+  padding-inline: var(--gutter);
+}
+.rm .rm-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(0deg, rgba(16, 20, 18, .94) 0%, rgba(16, 20, 18, .72) 40%, rgba(16, 20, 18, 0) 75%),
+    linear-gradient(90deg, rgba(16, 20, 18, .55), rgba(16, 20, 18, 0) 65%);
+}
+.rm .rm-scene > * { margin-block: 0; }
+.rm .rm-scene > .actions { margin-top: .5rem; }
+.rm .rm-finale { align-content: center; }
+
+/* ------------------------------------------------------------------ no JS, or the stage failed */
+
+.no-js [data-copy-layer],
+.stage-failed [data-copy-layer] { padding-top: var(--chrome-h); }
+.no-js .copy,
+.stage-failed .copy {
+  max-width: 46rem;
+  padding: 3.5rem var(--gutter);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .reg, .field input, .field textarea, .contact a, .full-form a,
+  .nav a, .nav a::after, .menu > summary, .menu-panel a { transition: none; }
+  .slug [data-section-label] { animation: none !important; }
+  .cue i::after { animation: none; }
+  .btn[aria-busy="true"] { animation: none; }
+}
+
+/* ------------------------------------------------------------------ keyboard + screen-reader access */
+.skip, .sections a {
+  position: fixed;
+  z-index: 20;
+  top: .75rem;
+  left: .75rem;
+  padding: .7rem 1rem;
+  background: var(--amber);
+  color: var(--black, #101412);
+  font: 700 .875rem/1 var(--font);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip:focus, .sections a:focus { transform: none; outline: 2px solid var(--paper); outline-offset: 3px; }
+.sections { position: fixed; top: 0; left: 0; z-index: 20; pointer-events: auto; }
+.rm .sections { display: none; }

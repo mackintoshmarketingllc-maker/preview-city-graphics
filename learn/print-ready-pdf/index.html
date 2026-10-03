@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="utf-8">
+  <!-- live-send --><script src="../../site-config.js"></script><script src="../../runtime/live-send.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>How to Save a Print-Ready PDF (From Whatever You Design In) — City Graphics</title>
+  <meta name="description" content="A print-ready PDF is a file exported (not just saved) as a PDF with fonts embedded and bleed included, so it prints the way it looks on your screen.">
+  <meta name="theme-color" content="#101412">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23101412'/%3E%3Ccircle cx='16' cy='16' r='7.5' fill='none' stroke='%23ffb81c' stroke-width='2.4'/%3E%3Cpath d='M16 4v24M4 16h24' stroke='%23ffb81c' stroke-width='2.4'/%3E%3C/svg%3E">
+  <link rel="preload" href="../../fonts/f2-k3kQo8UDI-1M0wlSfdnoLg.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <link rel="stylesheet" href="../../pages.css">
+  <script src="../../pages.js" defer></script>
+  <script src="page.js" defer></script>
+  <style>
+    /* Guide pages: the article's small print. */
+    .prose .list-lead + ul { margin-top: .55em; }
+
+    /* The three tool notes run as one ruled stack. */
+    .prose > .disclosure { margin-top: 1.75em; }
+    .prose > .disclosure + .disclosure { margin-top: 0; }
+
+    /* Sources: small print under the press colour bar. */
+    .prose > .sources { margin-top: clamp(2.75rem, 5vw, 3.75rem); }
+    .sources { position: relative; padding-top: 1.6rem; }
+    .sources::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--cyan) 0 25%, var(--magenta) 0 50%, var(--yellow) 0 75%, var(--k-patch) 0);
+    }
+    .prose .sources h2 {
+      margin: 0;
+      color: var(--fg);
+      font-size: .75rem;
+      font-weight: 700;
+      font-stretch: 100%;
+      letter-spacing: .2em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+    .prose .sources ol { margin-top: .9rem; }
+    .prose .sources li + li { margin-top: .4em; }
+
+    .endnote a { margin-left: .3em; }
+
+    @media (forced-colors: active) {
+      .sources::before { forced-color-adjust: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Halftone screen: turns a red ramp + green dot field into amber dots that shrink toward the edge of the light. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="halftone-amber" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.7216  0 0 0 0 0.1098  6 6 0 0 -6"/>
+    </filter>
+  </svg>
+
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../assets/logo.svg" alt="City Graphics" width="252" height="50">
+        <span class="brand-place">Portland, Oregon</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="../../services/">Services</a></li>
+          <li><a href="../../why-us/">Why Us</a></li>
+          <li><a href="../../portals/">Portals</a></li>
+          <li><a href="../../learn/" aria-current="page">New to Printing?</a></li>
+          <li><a href="../../non-profit/">Non-Profits</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--chrome" href="../../quote/">Get a quote</a>
+      <details class="menu">
+        <summary>
+          <span class="visually-hidden">Menu</span>
+          <svg class="i-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6.5h18M3 12h18M3 17.5h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </summary>
+        <nav class="menu-panel" aria-label="Menu">
+          <ol>
+            <li><a href="../../services/"><span class="menu-num">01</span>Services</a></li>
+            <li><a href="../../why-us/"><span class="menu-num">02</span>Why Us</a></li>
+            <li><a href="../../portals/"><span class="menu-num">03</span>Portals</a></li>
+            <li><a href="../../learn/" aria-current="page"><span class="menu-num">04</span>New to Printing?</a></li>
+            <li><a href="../../quote/"><span class="menu-num">05</span>Get a quote</a></li>
+            <li><a href="../../non-profit/"><span class="menu-num">06</span>Non-Profits</a></li>
+            <li><a href="../../contact/"><span class="menu-num">07</span>Contact</a></li>
+          </ol>
+        </nav>
+      </details>
+    </div>
+    <div class="press-bar" aria-hidden="true"><i></i></div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <article>
+      <div class="masthead masthead--short">
+        <div class="masthead-inner">
+          <div class="masthead-copy">
+            <a class="backlink" href="../../learn/"><span aria-hidden="true">←</span>&nbsp;All beginner guides</a>
+            <p class="kicker">Getting comfortable · 6 min read</p>
+            <h1 class="display display--m">How to Save a Print-Ready PDF (From Whatever You Design In)</h1>
+            <p class="lede">A print-ready PDF is a file exported (not just saved) as a PDF with fonts embedded and bleed included, so it prints the way it looks on your screen.</p>
+            <p class="byline">Reviewed by Greg Mackintosh</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sheet sheet--page">
+        <div class="prose">
+          <p>A print-ready PDF is a file that's been exported — not just saved — with the fonts locked in and bleed included, so what prints matches what you see on screen. The exact steps differ depending on what you designed in, but the goal is the same everywhere.</p>
+
+          <blockquote>
+            <p><strong>What this means for your order:</strong> a file that looks perfect on your screen can still hit trouble at the printer if it wasn't exported the right way — a font can get substituted, bleed can be missing. Getting the export right the first time saves a round of back-and-forth.</p>
+          </blockquote>
+
+          <p>Whatever you're working in — InDesign, Canva, Photoshop, or one of the popular word processors, like Microsoft's PowerPoint — the export step matters as much as the design itself. The universal principles are the same regardless of tool: correct document size, bleed built in if your design needs edge-to-edge color, fonts embedded, high-resolution images, then export to PDF rather than just saving. Here's what to check by tool.</p>
+
+          <details class="disclosure">
+            <summary>Canva</summary>
+            <div class="disclosure-body">
+              <p>Use Canva's PDF Print download option rather than the standard PDF, since that's the version built for printing rather than screen viewing. If your design needs color to run to the edge, Canva has a bleed setting to turn on before you export — see <a href="../../learn/what-is-bleed/">what bleed is</a> if that's new to you.</p>
+            </div>
+          </details>
+          <details class="disclosure">
+            <summary>Word and PowerPoint</summary>
+            <div class="disclosure-body">
+              <p>In Word and PowerPoint, using "Save As" or "Export" and choosing PDF is the export step — Microsoft's own help documentation walks through this for its desktop apps. That export alone doesn't automatically make the file print-ready, though: these tools weren't built with bleed and trim in mind the way design software is, so it's still worth checking document size, bleed, fonts, image resolution, and color before you send the file, and confirming with your printer how they want edge-to-edge designs handled from these tools.</p>
+            </div>
+          </details>
+          <details class="disclosure">
+            <summary>InDesign</summary>
+            <div class="disclosure-body">
+              <p>InDesign has a "Package" feature that bundles your file together with its fonts and linked images into one folder — sometimes called a save-for-printer workflow — so nothing gets left behind or substituted when it reaches the printer.</p>
+            </div>
+          </details>
+
+          <h2>What about AI-generated images?</h2>
+          <p>This one deserves its own note. AI image generators typically output a raster image (a grid of pixels, the same kind a digital photo is) around 1024 to 2048 pixels on a side. That's plenty for something postcard-sized, but it can fall apart at poster size — the same information gets stretched over a lot more paper. If you're planning to print an AI-generated image large, generate it at the biggest size the tool allows, or run it through an upscaling tool first, before you build your final file around it.</p>
+          <p>If you're not sure whether your image will hold up at the size you want, a proof strip — a small printed sample at the actual size — is the honest way to check, for a modest upcharge. See <a href="../../learn/resolution-dpi-plain-english/">resolution and DPI in plain English</a> for more on how that works.</p>
+          <p>One more thing worth knowing: the U.S. Supreme Court declined to review the question in March 2026, leaving the existing federal appellate ruling in place (Thaler v. Perlmutter) — purely AI-generated output with no human authorship isn't eligible for copyright, meaning nobody "owns" a pure AI image in the traditional sense. It's still usable under most platforms' commercial terms, but it likely won't be protectable as your own work unless you've made meaningful human edits to it. This is a legal area that can shift, so treat it as a starting point, not the final word.</p>
+
+          <h2>What this article can't tell you</h2>
+          <p>Export menus move — software updates change button names and locations regularly. This article describes the concept (embed fonts, include bleed, export to PDF) rather than an exact click path, since the exact steps will drift out of date faster than the underlying idea will. Your printer's accepted file types can also vary — some take native files, most want PDF only. Confirm with your shop before you export. Using a tool we don't cover here? The universal checklist above still applies — pair it with your tool's own export documentation.</p>
+          <p>Not sure if your file is ready? <a href="../../quote/">Get a quote</a> and we'll flag anything that needs a second look before it goes to press.</p>
+
+          <p class="list-lead"><strong>Next steps:</strong></p>
+          <ul>
+            <li><a href="../../learn/what-is-bleed/">What is bleed, and do I really need it?</a></li>
+            <li><a href="../../learn/resolution-dpi-plain-english/">Resolution and DPI in plain English</a></li>
+            <li><a href="../../learn/fonts-without-paying/">Fonts, and why some cost money</a></li>
+            <li><a href="../../learn/how-print-ordering-works/">How print ordering actually works</a></li>
+          </ul>
+
+          <section class="sources" aria-labelledby="sources-title">
+            <h2 id="sources-title">Sources</h2>
+            <ol>
+              <li><a href="https://support.microsoft.com/en-us/office/save-or-convert-to-pdf-or-xps-in-office-desktop-apps-d85416c5-7d77-4fd6-a216-6f4bf7c7c110">https://support.microsoft.com/en-us/office/save-or-convert-to-pdf-or-xps-in-office-desktop-apps-d85416c5-7d77-4fd6-a216-6f4bf7c7c110</a></li>
+              <li><a href="https://www.trupeer.ai/tutorials/how-to-add-bleed-in-canva">https://www.trupeer.ai/tutorials/how-to-add-bleed-in-canva</a></li>
+              <li><a href="https://guides.library.vcu.edu/Polished-Posters/Indesign/Saving">https://guides.library.vcu.edu/Polished-Posters/Indesign/Saving</a></li>
+              <li><a href="https://constitutioncenter.org/blog/supreme-court-denies-artificial-intelligence-authorship-claim-for-artwork-copyright">https://constitutioncenter.org/blog/supreme-court-denies-artificial-intelligence-authorship-claim-for-artwork-copyright</a></li>
+              <li><a href="https://letsenhance.io/blog/guide/upscale-ai-generated-image-for-print/">https://letsenhance.io/blog/guide/upscale-ai-generated-image-for-print/</a></li>
+            </ol>
+          </section>
+
+          <div class="pager">
+            <a class="pager-prev" href="../../learn/resolution-dpi-plain-english/">
+              <p class="label">Previous guide</p>
+              <p class="pager-title">Resolution and DPI, in Plain English</p>
+            </a>
+            <a class="pager-next" href="../../learn/fonts-without-paying/">
+              <p class="label">Next guide</p>
+              <p class="pager-title">Fonts Without Paying: How Font Licensing Actually Works</p>
+            </a>
+          </div>
+
+          <p class="endnote">Questions about your own project? We're happy to help — no pressure.<a href="../../quote/">Reach out when you're ready</a>.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a class="foot-logo" href="../../index.html"><img src="../../assets/logo.svg" alt="City Graphics home" width="252" height="50" loading="lazy"></a>
+        <address class="foot-address">
+          <p>222 SW 4th Avenue<br>Portland, OR 97204</p>
+          <p>Monday–Friday, 9:30–4:30</p>
+          <p><a href="tel:+15032222942">(503) 222-2942</a><br><a href="tel:+15032229341">Fax (503) 222-9341</a><br><a href="mailto:sendjob@citygi.com">sendjob@citygi.com</a></p>
+        </address>
+      </div>
+      <nav class="foot-nav" aria-labelledby="foot-sitemap">
+        <h2 id="foot-sitemap">Sitemap</h2>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../services/">Services</a></li>
+          <li><a href="../../why-us/">Why Us</a></li>
+          <li><a href="../../portals/">Portals</a></li>
+          <li><a href="../../learn/" aria-current="page">New to Printing?</a></li>
+          <li><a href="../../quote/">Get a quote</a></li>
+          <li><a href="../../non-profit/">Non-Profits</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+        </ul>
+        <p class="foot-privacy"><a href="../../privacy/">Privacy &amp; Your Files</a></p>
+      </nav>
+    </div>
+    <p class="foot-legal">© City Graphics 2026. All rights reserved. Site design, content, and the portal experience are proprietary to City Graphics.</p>
+  </footer>
+</body>
+</html>
