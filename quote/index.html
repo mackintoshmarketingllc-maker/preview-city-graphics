@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="utf-8">
+  <!-- live-send --><script src="../site-config.js"></script><script src="../runtime/live-send.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Get a Print Quote — City Graphics, Portland OR</title>
+  <meta name="description" content="Request a printing quote from City Graphics. Describe your job, attach your files, and we'll review it and follow up during business hours.">
+  <meta name="theme-color" content="#101412">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23101412'/%3E%3Ccircle cx='16' cy='16' r='7.5' fill='none' stroke='%23ffb81c' stroke-width='2.4'/%3E%3Cpath d='M16 4v24M4 16h24' stroke='%23ffb81c' stroke-width='2.4'/%3E%3C/svg%3E">
+  <link rel="preload" href="../fonts/f2-k3kQo8UDI-1M0wlSfdnoLg.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../pages.css">
+  <script src="../pages.js" defer></script>
+  <script src="page.js" defer></script>
+  <style>
+    /* Quote page: the contact links under the lede, the full-width drop target and its file rows,
+       and the job ticket that takes the form's place once a request is in. */
+    .masthead-copy > .actions { margin-top: 2rem; }
+    .masthead-copy .textlink { font-size: 1.0625rem; }
+    .masthead .plate { align-self: center; }
+
+    .drop-cta { width: 100%; padding-block: 1.5rem; }
+    .drop-cta strong { font-size: 1.1875rem; font-weight: 800; }
+    .drop.is-full { border-style: solid; }
+    .drop.is-full .drop-cta { background: var(--stock-2); color: var(--fg-2); }
+    .drop input[type="file"]:disabled { cursor: not-allowed; }
+    .hint .link { font-weight: 700; }
+
+    .file-item { flex-wrap: wrap; row-gap: .5rem; }
+    .file-item .file-meta { flex: 1 1 15rem; color: var(--fg); font-weight: 600; font-variant-numeric: tabular-nums; }
+    .file-item .file-status {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      color: var(--fg-3);
+      font-size: .8125rem;
+      font-weight: 600;
+    }
+    .file-item progress {
+      flex: 1 0 100%;
+      height: 3px;
+      margin: 0;
+      border: 0;
+      background: var(--rule);
+      color: var(--green-ink);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .file-item progress::-webkit-progress-bar { background: var(--rule); }
+    .file-item progress::-webkit-progress-value { background: var(--green-ink); }
+    .file-item progress::-moz-progress-bar { background: var(--green-ink); }
+
+    .form-foot .btn { min-width: 14rem; }
+
+    /* The confirmation prints like a job ticket: big headline, the request number on a black slug. */
+    .confirm {
+      display: grid;
+      justify-items: start;
+      gap: 1.5rem;
+      max-width: 42rem;
+      margin-inline: auto;
+      padding-block: clamp(1rem, 4vw, 3rem);
+    }
+    .confirm:focus { outline: none; }
+    .confirm h2 {
+      font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem);
+      font-stretch: 70%;
+      line-height: .92;
+    }
+    .confirm-id strong {
+      display: inline-block;
+      padding: .7rem 1rem .65rem;
+      background: var(--k);
+      color: var(--paper);
+      font-size: clamp(1.125rem, 1rem + .5vw, 1.375rem);
+      font-weight: 700;
+      letter-spacing: .08em;
+      line-height: 1;
+      overflow-wrap: anywhere;
+    }
+    .confirm-note { max-width: 52ch; color: var(--fg-2); font-size: 1.0625rem; line-height: 1.6; }
+    @media (prefers-reduced-motion: no-preference) {
+      .confirm h2 { animation: into-register 1.15s var(--ease) .12s both; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Halftone screen: turns a red ramp + green dot field into amber dots that shrink toward the edge of the light. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="halftone-amber" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.7216  0 0 0 0 0.1098  6 6 0 0 -6"/>
+    </filter>
+  </svg>
+
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="../index.html">
+        <img src="../assets/logo.svg" alt="City Graphics" width="252" height="50">
+        <span class="brand-place">Portland, Oregon</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="../why-us/">Why Us</a></li>
+          <li><a href="../portals/">Portals</a></li>
+          <li><a href="../learn/">New to Printing?</a></li>
+          <li><a href="../non-profit/">Non-Profits</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--chrome" href="../quote/" aria-current="page">Get a quote</a>
+      <details class="menu">
+        <summary>
+          <span class="visually-hidden">Menu</span>
+          <svg class="i-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6.5h18M3 12h18M3 17.5h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </summary>
+        <nav class="menu-panel" aria-label="Menu">
+          <ol>
+            <li><a href="../services/"><span class="menu-num">01</span>Services</a></li>
+            <li><a href="../why-us/"><span class="menu-num">02</span>Why Us</a></li>
+            <li><a href="../portals/"><span class="menu-num">03</span>Portals</a></li>
+            <li><a href="../learn/"><span class="menu-num">04</span>New to Printing?</a></li>
+            <li><a href="../quote/" aria-current="page"><span class="menu-num">05</span>Get a quote</a></li>
+            <li><a href="../non-profit/"><span class="menu-num">06</span>Non-Profits</a></li>
+            <li><a href="../contact/"><span class="menu-num">07</span>Contact</a></li>
+          </ol>
+        </nav>
+      </details>
+    </div>
+    <div class="press-bar" aria-hidden="true"><i></i></div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="masthead masthead--split">
+      <div class="masthead-inner">
+        <div class="masthead-copy">
+          <p class="kicker">Get a Quote</p>
+          <h1 class="display">Tell us about your job.</h1>
+          <p class="lede">Describe what you're making in plain words and attach your files if you have them — we'll review your request and follow up during business hours. Prefer to talk? Call (503) 222-2942, or email sendjob@citygi.com.</p>
+          <div class="actions">
+            <a class="textlink" href="tel:+15032222942">Call (503) 222-2942</a>
+            <a class="textlink" href="mailto:sendjob@citygi.com">sendjob@citygi.com</a>
+          </div>
+        </div>
+        <figure class="plate">
+          <img src="../media/f362039302a3.webp" alt="Hawthorne Bridge and the Portland skyline at dusk" width="750" height="341" fetchpriority="high">
+        </figure>
+      </div>
+    </div>
+
+    <div class="sheet sheet--page" id="quote">
+      <form class="form" id="quote-form">
+        <div class="hp" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <fieldset class="group">
+          <legend>Contact</legend>
+          <div class="fields">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="name-error">
+              <p class="field-error" id="name-error"></p>
+            </div>
+            <div class="field">
+              <label for="company">Company <span class="opt">(optional)</span></label>
+              <input id="company" name="company" type="text" autocomplete="organization" maxlength="120">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="email-error">
+              <p class="field-error" id="email-error"></p>
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span class="opt">(optional)</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="group">
+          <legend>Project</legend>
+          <div class="fields">
+            <div class="field field--wide">
+              <label for="projectDescription">Project description</label>
+              <textarea id="projectDescription" name="projectDescription" maxlength="4000" required aria-describedby="projectDescription-error"></textarea>
+              <p class="field-error" id="projectDescription-error"></p>
+            </div>
+            <div class="field">
+              <label for="quantity" id="quantity-label">Quantity</label>
+              <div class="input-pair">
+                <input id="quantity" name="quantity" type="text" maxlength="80">
+                <button class="chip" type="button" data-not-sure="quantity" aria-describedby="quantity-label">Not sure</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="flatSize" id="flatSize-label">Flat size</label>
+              <div class="input-pair">
+                <input id="flatSize" name="flatSize" type="text" maxlength="80">
+                <button class="chip" type="button" data-not-sure="flatSize" aria-describedby="flatSize-label">Not sure</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="finishedSize" id="finishedSize-label">Finished size <span class="opt">(optional)</span></label>
+              <div class="input-pair">
+                <input id="finishedSize" name="finishedSize" type="text" maxlength="80">
+                <button class="chip" type="button" data-not-sure="finishedSize" aria-describedby="finishedSize-label">Not sure</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="pagesSheets" id="pagesSheets-label">Pages/sheets <span class="opt">(optional)</span></label>
+              <div class="input-pair">
+                <input id="pagesSheets" name="pagesSheets" type="text" maxlength="80">
+                <button class="chip" type="button" data-not-sure="pagesSheets" aria-describedby="pagesSheets-label">Not sure</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="paperStock" id="paperStock-label">Paper/stock</label>
+              <div class="input-pair">
+                <input id="paperStock" name="paperStock" type="text" maxlength="160">
+                <button class="chip" type="button" data-not-sure="paperStock" aria-describedby="paperStock-label">Not sure</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="color">Color</label>
+              <select id="color" name="color">
+                <option value="" selected>Choose one</option>
+                <option value="Full color both sides">Full color both sides</option>
+                <option value="Full color one side">Full color one side</option>
+                <option value="Black &amp; white">Black &amp; white</option>
+                <option value="Not sure">Not sure</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="artworkStatus">Artwork status</label>
+              <select id="artworkStatus" name="artworkStatus">
+                <option value="" selected>Choose one</option>
+                <option value="Print-ready">Print-ready</option>
+                <option value="Needs work">Needs work</option>
+                <option value="Not sure">Not sure</option>
+              </select>
+            </div>
+            <fieldset class="checkgroup field--wide">
+              <legend>Finishing</legend>
+              <div class="checks">
+                <label class="check"><input type="checkbox" name="finishing" value="Cutting"><span>Cutting</span></label>
+                <label class="check"><input type="checkbox" name="finishing" value="Folding"><span>Folding</span></label>
+                <label class="check"><input type="checkbox" name="finishing" value="Saddle stitch"><span>Saddle stitch</span></label>
+                <label class="check"><input type="checkbox" name="finishing" value="Coil bind"><span>Coil bind</span></label>
+                <label class="check"><input type="checkbox" name="finishing" value="Lamination"><span>Lamination</span></label>
+                <label class="check"><input type="checkbox" name="finishing" value="Other"><span>Other</span></label>
+                <label class="check"><input type="checkbox" name="finishing" value="Not sure"><span>Not sure</span></label>
+              </div>
+            </fieldset>
+            <div class="field field--wide">
+              <label for="fulfillment">Pickup–delivery–mail <span class="opt">(optional)</span></label>
+              <select id="fulfillment" name="fulfillment">
+                <option value="" selected>Choose one</option>
+                <option value="Pickup">Pickup</option>
+                <option value="Delivery">Delivery</option>
+                <option value="Mail">Mail</option>
+                <option value="Not sure">Not sure</option>
+              </select>
+            </div>
+            <div class="field" data-mail hidden>
+              <label for="mailingQuantity" id="mailingQuantity-label">Mailing quantity <span class="opt">(optional)</span></label>
+              <div class="input-pair">
+                <input id="mailingQuantity" name="mailingQuantity" type="text" maxlength="80" disabled>
+                <button class="chip" type="button" data-not-sure="mailingQuantity" aria-describedby="mailingQuantity-label">Not sure</button>
+              </div>
+            </div>
+            <div class="field" data-mail hidden>
+              <label for="mailingDestination" id="mailingDestination-label">Mailing destination <span class="opt">(optional)</span></label>
+              <div class="input-pair">
+                <input id="mailingDestination" name="mailingDestination" type="text" maxlength="200" disabled>
+                <button class="chip" type="button" data-not-sure="mailingDestination" aria-describedby="mailingDestination-label">Not sure</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="requestedInHandsDate" id="requestedInHandsDate-label">Requested in-hands date <span class="opt">(optional)</span></label>
+              <div class="input-pair">
+                <input id="requestedInHandsDate" name="requestedInHandsDate" type="text" maxlength="80">
+                <button class="chip" type="button" data-not-sure="requestedInHandsDate" aria-describedby="requestedInHandsDate-label">Not sure</button>
+              </div>
+            </div>
+            <div class="field field--wide">
+              <label for="specialInstructions">Special instructions <span class="opt">(optional)</span></label>
+              <textarea id="specialInstructions" name="specialInstructions" maxlength="2000"></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="group">
+          <legend>Files</legend>
+          <div class="field">
+            <span class="label-text" id="files-label">File upload <span class="opt">(optional)</span></span>
+            <div class="drop" id="files-drop">
+              <input id="files" type="file" multiple accept=".pdf,.ai,.eps,.jpg,.jpeg,.png,.tif,.tiff,.zip" aria-describedby="files-label files-help files-note">
+              <label class="drop-cta" for="files"><strong id="files-cta">Choose files</strong> <small>or drop them here</small></label>
+            </div>
+            <p class="hint" id="files-help">PDF preferred. We also take AI, EPS, JPG, PNG, TIFF and ZIP — up to 10 files, 50 MB each. Something else, or bigger? Call us.</p>
+            <p class="hint" id="files-note">File uploads run on the live quote page: <a class="link" href="https://www.citygi.com/quote">citygi.com/quote</a>.</p>
+            <ul class="file-list" id="file-list" hidden></ul>
+          </div>
+        </fieldset>
+
+        <p class="form-status" id="quote-status" role="status" aria-live="polite"></p>
+
+        <div class="form-foot">
+          <div class="form-note">
+            <p>Submitting a request doesn't confirm schedule, pricing, or acceptance — a real person will confirm all three.</p>
+            <p><a href="../privacy/">Privacy &amp; Your Files</a></p>
+          </div>
+          <button class="btn" type="submit" id="quote-submit">Send quote request</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a class="foot-logo" href="../index.html"><img src="../assets/logo.svg" alt="City Graphics home" width="252" height="50" loading="lazy"></a>
+        <address class="foot-address">
+          <p>222 SW 4th Avenue<br>Portland, OR 97204</p>
+          <p>Monday–Friday, 9:30–4:30</p>
+          <p><a href="tel:+15032222942">(503) 222-2942</a><br><a href="tel:+15032229341">Fax (503) 222-9341</a><br><a href="mailto:sendjob@citygi.com">sendjob@citygi.com</a></p>
+        </address>
+      </div>
+      <nav class="foot-nav" aria-labelledby="foot-sitemap">
+        <h2 id="foot-sitemap">Sitemap</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="../why-us/">Why Us</a></li>
+          <li><a href="../portals/">Portals</a></li>
+          <li><a href="../learn/">New to Printing?</a></li>
+          <li><a href="../quote/" aria-current="page">Get a quote</a></li>
+          <li><a href="../non-profit/">Non-Profits</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+        <p class="foot-privacy"><a href="../privacy/">Privacy &amp; Your Files</a></p>
+      </nav>
+    </div>
+    <p class="foot-legal">© City Graphics 2026. All rights reserved. Site design, content, and the portal experience are proprietary to City Graphics.</p>
+  </footer>
+</body>
+</html>

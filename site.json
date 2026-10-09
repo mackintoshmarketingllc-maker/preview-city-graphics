@@ -1,0 +1,310 @@
+{
+  "brand": {
+    "name": "City Graphics",
+    "tagline": "Your Portland print shop, downtown since 1996.",
+    "voice": "Plain-spoken and reassuring, like a production pro across the counter. It says 'you' and 'we', gives exact specs honestly (13×19½″ sheets, 51-inch long sheets) and explains print jargon in plain words. Short, practical sentences such as 'Tell us what you're making — we'll help you get it printed right.' No hype and no promised outcomes.",
+    "audience": "Portland-area businesses, marketers, companies and nonprofits that need printing, mailing or trade show work, including people who are new to printing.",
+    "palette": {
+      "paper": "#101412",
+      "ink": "#f4f1e8",
+      "accent": "#ffb81c",
+      "accent2": "#008344"
+    },
+    "typeDirection": "Display: Archivo Variable at black weight in a condensed width, set in sentence case with tight leading, in off-white, like the site's hero headline. Kickers and section labels: Archivo bold in small uppercase with wide letter-spacing, in amber #ffb81c. Body: Archivo regular at normal width. Buttons are solid amber blocks with near-black bold text. Use a thin cyan / magenta / yellow / near-black rule as the recurring graphic divider, as in the site's nav bar."
+  },
+  "fps": 24,
+  "timing": {
+    "vhPerSecond": 0.3,
+    "dissolveVh": 0.4,
+    "finaleVh": 0.9
+  },
+  "clips": [
+    {
+      "dir": "frames/c1",
+      "count": 121
+    },
+    {
+      "dir": "frames/c2",
+      "count": 120
+    },
+    {
+      "dir": "frames/c3",
+      "count": 120
+    },
+    {
+      "dir": "frames/c4",
+      "count": 120
+    },
+    {
+      "dir": "frames/c5",
+      "count": 120
+    },
+    {
+      "dir": "frames/c6",
+      "count": 120
+    },
+    {
+      "dir": "frames/c7",
+      "count": 120
+    },
+    {
+      "dir": "frames/c8",
+      "count": 120
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s1",
+      "label": "DOWNTOWN PORTLAND",
+      "clip": 0,
+      "holdVh": 0.36,
+      "seamToNext": "continuous",
+      "focusX": 0.65,
+      "copyIn": 0,
+      "copyPosition": "left",
+      "copy": {
+        "kicker": "Portland, Oregon · Since 1996",
+        "headline": "Your Portland print shop, downtown since 1996.",
+        "body": "City Graphics is a single source for your marketing, printing, mailing and trade show needs. Tell us what you're making — we'll help you get it printed right.",
+        "cta": "Get a quote"
+      }
+    },
+    {
+      "id": "s2",
+      "label": "DESIGN & PREPRESS",
+      "clip": 1,
+      "holdVh": 0.3,
+      "seamToNext": "continuous",
+      "focusX": 0.33,
+      "copyIn": 0.592,
+      "copyPosition": "right",
+      "copy": {
+        "kicker": "Design & prepress",
+        "headline": "Not sure what you need? That's normal.",
+        "body": "In-house graphic design, file setup and conversion, color correction, proofs, imposition & custom work — tell us what you need.",
+        "cta": ""
+      }
+    },
+    {
+      "id": "s3",
+      "label": "PRINT",
+      "clip": 2,
+      "holdVh": 0.36,
+      "seamToNext": "continuous",
+      "focusX": 0.65,
+      "copyIn": 0.534,
+      "copyPosition": "left",
+      "copy": {
+        "kicker": "Print",
+        "headline": "Quick-turn, short-run, full-color.",
+        "body": "On our Digital presses — standard sheets up to 13×19½″, and long-sheet printing up to 51 inches for banners, book covers, and panoramic pieces.",
+        "cta": ""
+      }
+    },
+    {
+      "id": "s4",
+      "label": "LARGE FORMAT",
+      "clip": 3,
+      "holdVh": 0.36,
+      "seamToNext": "continuous",
+      "focusX": 0.42,
+      "copyIn": 0.493,
+      "copyPosition": "right",
+      "copy": {
+        "kicker": "Wide format",
+        "headline": "Printing up to 50+″ wide.",
+        "body": "Posters, banners, signage, canvas and fine-art prints, with optional mounting and laminating. Trade show panels and banner stands. Larger rigid work handled through trusted production partners.",
+        "cta": ""
+      }
+    },
+    {
+      "id": "s5",
+      "label": "BINDERY",
+      "clip": 4,
+      "holdVh": 0.42,
+      "seamToNext": "continuous",
+      "focusX": 0.66,
+      "copyIn": 0.558,
+      "copyPosition": "left",
+      "copy": {
+        "kicker": "Bindery & finishing",
+        "headline": "Cut, fold, stitch, bind, laminate.",
+        "body": "Cutting, folding, saddle stitch, coil and perfect binding, Wire-O, laminating, scoring, die cutting, round cornering, perforating — down to mounting on gator or foamcore.",
+        "cta": ""
+      }
+    },
+    {
+      "id": "s6",
+      "label": "MAILING",
+      "clip": 5,
+      "holdVh": 0.36,
+      "seamToNext": "continuous",
+      "focusX": 0.35,
+      "copyIn": 0.575,
+      "copyPosition": "right",
+      "copy": {
+        "kicker": "Mailing services",
+        "headline": "Straight into the mail stream.",
+        "body": "List processing, addressing, presorting, and machine inserting — we can take your mailing from design to the post office in one shop.",
+        "cta": ""
+      }
+    },
+    {
+      "id": "s7",
+      "label": "PORTALS",
+      "clip": 6,
+      "holdVh": 0.42,
+      "seamToNext": "continuous",
+      "focusX": 0.66,
+      "copyIn": 0.598,
+      "copyPosition": "left",
+      "copy": {
+        "kicker": "Portals",
+        "headline": "Your brand. Their names. Zero back-and-forth.",
+        "body": "Private ordering portals for companies that print with us. Your templates stay locked to your brand — your people type their details, watch the proof update live, and approve.",
+        "cta": "Try the live demo"
+      }
+    },
+    {
+      "id": "s8",
+      "label": "WHY US",
+      "clip": 7,
+      "holdVh": 0.36,
+      "seamToNext": "continuous",
+      "focusX": 0.64,
+      "copyIn": 0.451,
+      "copyPosition": "left",
+      "copy": {
+        "kicker": "Why us",
+        "headline": "Small shop. Deep bench.",
+        "body": "Your job is run by people who've spent their careers in production — prepress through bindery — and who check the work at every step.",
+        "cta": "Get a quote"
+      }
+    }
+  ],
+  "posters": [
+    "posters/p0.jpg",
+    "posters/p1.jpg",
+    "posters/p2.jpg",
+    "posters/p3.jpg",
+    "posters/p4.jpg",
+    "posters/p5.jpg",
+    "posters/p6.jpg",
+    "posters/p7.jpg",
+    "posters/p8.jpg"
+  ],
+  "finale": {
+    "headline": "Tell us what you're making.",
+    "body": "Get a quote and describe it in plain words — we'll figure out the rest together. Call (503) 222-2942 or email sendjob@citygi.com. Nonprofits: ask about our nonprofit pricing.",
+    "cta": "Get a quote",
+    "fields": [
+      "Your name",
+      "Your email",
+      "Your phone",
+      "Company or organization"
+    ]
+  },
+  "logo": "assets/logo.svg",
+  "mobileClips": [
+    {
+      "dir": "frames/m1",
+      "count": 121
+    },
+    {
+      "dir": "frames/m2",
+      "count": 120
+    },
+    {
+      "dir": "frames/m3",
+      "count": 120
+    },
+    {
+      "dir": "frames/m4",
+      "count": 120
+    },
+    {
+      "dir": "frames/m5",
+      "count": 120
+    },
+    {
+      "dir": "frames/m6",
+      "count": 120
+    },
+    {
+      "dir": "frames/m7",
+      "count": 120
+    },
+    {
+      "dir": "frames/m8",
+      "count": 120
+    }
+  ],
+  "phoneLandscapeClips": [
+    {
+      "dir": "frames/q1",
+      "count": 121
+    },
+    {
+      "dir": "frames/q2",
+      "count": 120
+    },
+    {
+      "dir": "frames/q3",
+      "count": 120
+    },
+    {
+      "dir": "frames/q4",
+      "count": 120
+    },
+    {
+      "dir": "frames/q5",
+      "count": 120
+    },
+    {
+      "dir": "frames/q6",
+      "count": 120
+    },
+    {
+      "dir": "frames/q7",
+      "count": 120
+    },
+    {
+      "dir": "frames/q8",
+      "count": 120
+    }
+  ],
+  "phoneClips": [
+    {
+      "dir": "frames/p1",
+      "count": 121
+    },
+    {
+      "dir": "frames/p2",
+      "count": 120
+    },
+    {
+      "dir": "frames/p3",
+      "count": 120
+    },
+    {
+      "dir": "frames/p4",
+      "count": 120
+    },
+    {
+      "dir": "frames/p5",
+      "count": 120
+    },
+    {
+      "dir": "frames/p6",
+      "count": 120
+    },
+    {
+      "dir": "frames/p7",
+      "count": 120
+    },
+    {
+      "dir": "frames/p8",
+      "count": 120
+    }
+  ]
+}

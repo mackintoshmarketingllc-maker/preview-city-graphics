@@ -1,0 +1,41 @@
+/* Structural CSS for the scroll stage. The design layer (site.css) sets type, colour, layout and
+   positions of copy blocks; this file only owns pinning, timing classes and the text effects. */
+html, body { margin: 0; }
+/* 100lvh: the largest viewport, so a phone's address bar showing or hiding never resizes the stage. */
+.stage { position: fixed; top: 0; left: 0; right: 0; height: 100vh; height: 100lvh; z-index: 0; background: var(--stage-bg, #111); }
+.stage canvas { display: block; width: 100%; height: 100%; }
+#track { position: relative; z-index: -1; pointer-events: none; }
+
+/* Copy layer: fixed over the stage; children are timed by stage.js via .is-active. */
+[data-copy-layer] { position: fixed; inset: 0; z-index: 2; pointer-events: none; }
+[data-copy-layer] a, [data-copy-layer] button, [data-copy-layer] input, [data-copy-layer] textarea, [data-copy-layer] select, [data-copy-layer] label { pointer-events: auto; }
+.js-stage [data-scene] { position: absolute; opacity: 0; visibility: hidden;
+  transition: opacity .55s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1), filter .55s ease, letter-spacing .7s cubic-bezier(.2,.7,.2,1), visibility 0s linear .7s; }
+.js-stage [data-scene].is-active { opacity: 1; visibility: visible; transition-delay: 0s; }
+
+/* fx: rise */
+.js-stage [data-fx="rise"] { transform: translateY(1.2em); }
+.js-stage [data-fx="rise"].is-active { transform: none; }
+/* fx: smear: letters stretch sideways and blur, then resolve (reel: hero exit, sky copy entry) */
+.js-stage [data-fx="smear"] { filter: blur(10px); letter-spacing: .35em; transform: scaleX(1.12); transform-origin: left center; }
+.js-stage [data-fx="smear"].is-active { filter: none; letter-spacing: inherit; transform: none; }
+/* fx: fragments: each character resolves from a broken mask at its own delay (reel: "No fees") */
+.js-stage [data-fx="fragments"] { opacity: 1; visibility: visible; }
+.js-stage [data-fx="fragments"] .w { display: inline-block; white-space: nowrap; }
+.js-stage [data-fx="fragments"] .ch { display: inline-block; opacity: 0; clip-path: inset(0 0 100% 0);
+  transition: opacity .25s ease var(--d), clip-path .45s steps(4, end) var(--d); }
+.js-stage [data-fx="fragments"].is-active .ch { opacity: 1; clip-path: inset(0 0 0 0); }
+
+/* Without the stage (JS off or failed) the copy simply reads top to bottom. */
+.no-js [data-copy-layer], .stage-failed [data-copy-layer] { position: static; }
+.no-js .stage, .stage-failed .stage { display: none; }
+
+/* Reduced motion: stage.js builds one static section per scene with its poster still. */
+.rm .stage, .rm #track { display: none; }
+.rm [data-copy-layer] { position: static; pointer-events: auto; }
+.rm .rm-scene { position: relative; min-height: 100svh; background: center / cover no-repeat; display: grid; align-content: end; gap: 1rem; padding: clamp(1.5rem, 5vw, 4rem); box-sizing: border-box; }
+.rm .rm-scene [data-scene] { position: relative; inset: auto; transform: none; opacity: 1; visibility: visible; max-width: 40rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js-stage [data-scene] { transition: none; }
+}

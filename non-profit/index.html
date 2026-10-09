@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="utf-8">
+  <!-- live-send --><script src="../site-config.js"></script><script src="../runtime/live-send.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nonprofit Printing Partner — City Graphics, Portland OR</title>
+  <meta name="description" content="Design, printing and mailing support for Portland-area nonprofits — auction and fundraising materials, newsletters, annual reports, with nonprofit pricing available.">
+  <meta name="theme-color" content="#101412">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23101412'/%3E%3Ccircle cx='16' cy='16' r='7.5' fill='none' stroke='%23ffb81c' stroke-width='2.4'/%3E%3Cpath d='M16 4v24M4 16h24' stroke='%23ffb81c' stroke-width='2.4'/%3E%3C/svg%3E">
+  <link rel="preload" href="../fonts/f2-k3kQo8UDI-1M0wlSfdnoLg.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../pages.css">
+  <script src="../pages.js" defer></script>
+  <style>
+    /* Non-profits: the event job list, each line marked with a process-ink patch, then the
+       shop's history on a dark band with its own amber light. */
+    .support {
+      display: grid;
+      gap: clamp(1.75rem, 4vw, 3rem);
+    }
+    @media (min-width: 900px) {
+      .support { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
+    }
+    .support .section-title { max-width: 11ch; margin-bottom: 0; }
+
+    .asks {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: clamp(1.25rem, 3vw, 2.5rem);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .asks li {
+      display: flex;
+      align-items: baseline;
+      gap: .8rem;
+      padding: .85rem 0 .8rem;
+      border-bottom: 1px solid var(--rule-strong);
+      color: var(--fg);
+      font-size: clamp(1.125rem, 1rem + .45vw, 1.375rem);
+      font-weight: 800;
+      font-stretch: 82%;
+      line-height: 1.2;
+    }
+    .asks li:nth-child(-n + 2) { border-top: 1px solid var(--rule-strong); }
+    .asks li::before {
+      content: "";
+      flex: none;
+      width: .55rem;
+      height: .55rem;
+      background: var(--cyan);
+      transform: translateY(-.12em);
+    }
+    .asks li:nth-child(4n + 2)::before { background: var(--magenta); }
+    .asks li:nth-child(4n + 3)::before { background: var(--yellow); box-shadow: inset 0 0 0 1px rgba(16, 20, 18, .2); }
+    .asks li:nth-child(4n)::before { background: var(--k); }
+    @media (max-width: 479px) {
+      .asks { grid-template-columns: minmax(0, 1fr); }
+      .asks li:nth-child(2) { border-top: 0; }
+    }
+
+    .help {
+      margin-top: 1.5rem;
+      color: var(--accent);
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .mission {
+      margin-top: clamp(3.5rem, 7vw, 6rem);
+      padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 4rem);
+    }
+    .mission::before { inset: 0 0 0 52%; }
+    .mission .history {
+      max-width: 40rem;
+      color: var(--fg-2);
+      font-size: clamp(1.125rem, 1rem + .5vw, 1.375rem);
+      line-height: 1.55;
+      text-wrap: pretty;
+    }
+    .mission .pricing {
+      max-width: 24ch;
+      margin-top: 1.75rem;
+      color: var(--amber);
+      font-size: clamp(1.625rem, 1.2rem + 1.4vw, 2.5rem);
+      font-weight: 900;
+      font-stretch: 72%;
+      line-height: 1.02;
+      text-wrap: balance;
+    }
+    @media (max-width: 759px) {
+      .mission::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Halftone screen: turns a red ramp + green dot field into amber dots that shrink toward the edge of the light. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="halftone-amber" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.7216  0 0 0 0 0.1098  6 6 0 0 -6"/>
+    </filter>
+  </svg>
+
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="../index.html">
+        <img src="../assets/logo.svg" alt="City Graphics" width="252" height="50">
+        <span class="brand-place">Portland, Oregon</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="../why-us/">Why Us</a></li>
+          <li><a href="../portals/">Portals</a></li>
+          <li><a href="../learn/">New to Printing?</a></li>
+          <li><a href="../non-profit/" aria-current="page">Non-Profits</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--chrome" href="../quote/">Get a quote</a>
+      <details class="menu">
+        <summary>
+          <span class="visually-hidden">Menu</span>
+          <svg class="i-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6.5h18M3 12h18M3 17.5h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </summary>
+        <nav class="menu-panel" aria-label="Menu">
+          <ol>
+            <li><a href="../services/"><span class="menu-num">01</span>Services</a></li>
+            <li><a href="../why-us/"><span class="menu-num">02</span>Why Us</a></li>
+            <li><a href="../portals/"><span class="menu-num">03</span>Portals</a></li>
+            <li><a href="../learn/"><span class="menu-num">04</span>New to Printing?</a></li>
+            <li><a href="../quote/"><span class="menu-num">05</span>Get a quote</a></li>
+            <li><a href="../non-profit/" aria-current="page"><span class="menu-num">06</span>Non-Profits</a></li>
+            <li><a href="../contact/"><span class="menu-num">07</span>Contact</a></li>
+          </ol>
+        </nav>
+      </details>
+    </div>
+    <div class="press-bar" aria-hidden="true"><i></i></div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="masthead masthead--split">
+      <div class="masthead-inner">
+        <div class="masthead-copy">
+          <p class="kicker">Non-Profit Partners</p>
+          <h1 class="display">Partner with us.</h1>
+          <p class="lede">We'd like to partner with you in support of your mission. A strong design team backed by a full commercial print shop: mass mailings, business cards, brochures, flyers, newsletters, postcards, posters.</p>
+          <div class="actions">
+            <a class="btn" href="../quote/">Get a quote</a>
+            <a class="textlink" href="tel:+15032222942">Call (503) 222-2942</a>
+            <a class="textlink" href="mailto:sendjob@citygi.com">sendjob@citygi.com</a>
+          </div>
+        </div>
+        <figure class="plate">
+          <img src="../media/2f9a8f10835c.webp" alt="Participants running together in a city marathon" width="750" height="500" fetchpriority="high">
+          <figcaption class="plate-tabs"><p>Design</p><p>Print</p><p>Mail</p></figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <section class="support" aria-labelledby="support-title">
+        <h2 class="section-title" id="support-title">Auction &amp; fundraising support</h2>
+        <div>
+          <ul class="asks" role="list">
+            <li>Save-the-dates</li>
+            <li>Invites</li>
+            <li>RSVPs</li>
+            <li>Bidder cards</li>
+            <li>Event programs</li>
+            <li>Event signage</li>
+            <li>Newsletters</li>
+            <li>Annual reports</li>
+            <li>And more</li>
+          </ul>
+          <p class="help">Tell us how we can help.</p>
+        </div>
+      </section>
+
+      <div class="band mission">
+        <p class="history">For three decades, City Graphics has provided design, consulting and printing services to the greater Portland area, with a proud history of supporting a broad spectrum of nonprofit organizations.</p>
+        <p class="pricing">Ask about our nonprofit pricing — we scale it to your organization and your work.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a class="foot-logo" href="../index.html"><img src="../assets/logo.svg" alt="City Graphics home" width="252" height="50" loading="lazy"></a>
+        <address class="foot-address">
+          <p>222 SW 4th Avenue<br>Portland, OR 97204</p>
+          <p>Monday–Friday, 9:30–4:30</p>
+          <p><a href="tel:+15032222942">(503) 222-2942</a><br><a href="tel:+15032229341">Fax (503) 222-9341</a><br><a href="mailto:sendjob@citygi.com">sendjob@citygi.com</a></p>
+        </address>
+      </div>
+      <nav class="foot-nav" aria-labelledby="foot-sitemap">
+        <h2 id="foot-sitemap">Sitemap</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="../why-us/">Why Us</a></li>
+          <li><a href="../portals/">Portals</a></li>
+          <li><a href="../learn/">New to Printing?</a></li>
+          <li><a href="../quote/">Get a quote</a></li>
+          <li><a href="../non-profit/" aria-current="page">Non-Profits</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+        <p class="foot-privacy"><a href="../privacy/">Privacy &amp; Your Files</a></p>
+      </nav>
+    </div>
+    <p class="foot-legal">© City Graphics 2026. All rights reserved. Site design, content, and the portal experience are proprietary to City Graphics.</p>
+  </footer>
+</body>
+</html>

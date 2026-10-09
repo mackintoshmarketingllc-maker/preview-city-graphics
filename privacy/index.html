@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="utf-8">
+  <!-- live-send --><script src="../site-config.js"></script><script src="../runtime/live-send.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Privacy &amp; File Handling — City Graphics</title>
+  <meta name="description" content="How City Graphics handles the contact details and files you send with a quote request.">
+  <meta name="theme-color" content="#101412">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23101412'/%3E%3Ccircle cx='16' cy='16' r='7.5' fill='none' stroke='%23ffb81c' stroke-width='2.4'/%3E%3Cpath d='M16 4v24M4 16h24' stroke='%23ffb81c' stroke-width='2.4'/%3E%3C/svg%3E">
+  <link rel="preload" href="../fonts/f2-k3kQo8UDI-1M0wlSfdnoLg.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../pages.css">
+  <script src="../pages.js" defer></script>
+  <style>
+    /* The sheet slides further up here, so the river keeps running down both sides of it. */
+    .page-privacy { --overlap: clamp(3rem, 8vw, 7.5rem); }
+
+    /* Masthead printed over the Willamette at dusk: the bridge's own amber light replaces the
+       halftone glow, and the scrim carries a fine dot screen so the photograph reads as a pull. */
+    .masthead--photo {
+      display: grid;
+      align-content: end;
+      min-height: clamp(30rem, 74vh, 46rem);
+    }
+    .masthead--photo::before { display: none; }
+    .masthead--photo > img:first-child {
+      object-position: 62% 28%;
+      filter: saturate(.92) brightness(.8);
+    }
+    .masthead--photo::after {
+      background:
+        radial-gradient(circle, rgba(16, 20, 18, .42) 0 .85px, transparent 1.25px) 0 0 / 4px 4px,
+        linear-gradient(0deg, var(--k) 0, rgba(16, 20, 18, .86) calc(var(--overlap) + 2.5rem), rgba(16, 20, 18, .26) 64%, rgba(16, 20, 18, .5)),
+        linear-gradient(90deg, rgba(16, 20, 18, .74), rgba(16, 20, 18, 0) 70%);
+    }
+    .masthead--photo .masthead-inner { width: 100%; }
+
+    .privacy-title {
+      font-size: clamp(2.625rem, 1.6rem + 3.4vw, 4.75rem);
+      font-stretch: 70%;
+      line-height: .9;
+    }
+    .privacy-body > .callout { margin-block: 1.75rem; }
+
+    @media (max-width: 559px) {
+      .masthead--photo { min-height: clamp(26rem, 68vh, 34rem); }
+      .masthead--photo > img:first-child { object-position: 60% 40%; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Halftone screen: turns a red ramp + green dot field into amber dots that shrink toward the edge of the light. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="halftone-amber" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.7216  0 0 0 0 0.1098  6 6 0 0 -6"/>
+    </filter>
+  </svg>
+
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="../index.html">
+        <img src="../assets/logo.svg" alt="City Graphics" width="252" height="50">
+        <span class="brand-place">Portland, Oregon</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="../why-us/">Why Us</a></li>
+          <li><a href="../portals/">Portals</a></li>
+          <li><a href="../learn/">New to Printing?</a></li>
+          <li><a href="../non-profit/">Non-Profits</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--chrome" href="../quote/">Get a quote</a>
+      <details class="menu">
+        <summary>
+          <span class="visually-hidden">Menu</span>
+          <svg class="i-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6.5h18M3 12h18M3 17.5h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </summary>
+        <nav class="menu-panel" aria-label="Menu">
+          <ol>
+            <li><a href="../services/"><span class="menu-num">01</span>Services</a></li>
+            <li><a href="../why-us/"><span class="menu-num">02</span>Why Us</a></li>
+            <li><a href="../portals/"><span class="menu-num">03</span>Portals</a></li>
+            <li><a href="../learn/"><span class="menu-num">04</span>New to Printing?</a></li>
+            <li><a href="../quote/"><span class="menu-num">05</span>Get a quote</a></li>
+            <li><a href="../non-profit/"><span class="menu-num">06</span>Non-Profits</a></li>
+            <li><a href="../contact/"><span class="menu-num">07</span>Contact</a></li>
+          </ol>
+        </nav>
+      </details>
+    </div>
+    <div class="press-bar" aria-hidden="true"><i></i></div>
+  </header>
+
+  <main id="main" tabindex="-1" class="page-privacy">
+    <div class="masthead masthead--photo cover">
+      <img src="../media/93f96442d500.webp" alt="" width="1920" height="1281" fetchpriority="high">
+      <div class="masthead-inner">
+        <div class="masthead-copy">
+          <p class="kicker">Files handled by real people</p>
+          <p class="display">Local, direct, careful.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <div class="split split--wide-right">
+        <h1 class="privacy-title">Privacy &amp; Your Files</h1>
+        <div class="prose privacy-body">
+          <p>When you request a quote we collect your contact details and job description so we can respond, and the files you attach so we can review your job. We don't sell or share your information, and we don't use it for anything except your quote and your job.</p>
+          <p class="callout">Files from incomplete requests are deleted within 48 hours; files from submitted requests are kept for 90 days and then deleted unless the job goes into production.</p>
+          <p>Questions, or something confidential to send? Call <a href="tel:+15032222942">(503) 222-2942</a> or email <a href="mailto:sendjob@citygi.com">sendjob@citygi.com</a>.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a class="foot-logo" href="../index.html"><img src="../assets/logo.svg" alt="City Graphics home" width="252" height="50" loading="lazy"></a>
+        <address class="foot-address">
+          <p>222 SW 4th Avenue<br>Portland, OR 97204</p>
+          <p>Monday–Friday, 9:30–4:30</p>
+          <p><a href="tel:+15032222942">(503) 222-2942</a><br><a href="tel:+15032229341">Fax (503) 222-9341</a><br><a href="mailto:sendjob@citygi.com">sendjob@citygi.com</a></p>
+        </address>
+      </div>
+      <nav class="foot-nav" aria-labelledby="foot-sitemap">
+        <h2 id="foot-sitemap">Sitemap</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="../why-us/">Why Us</a></li>
+          <li><a href="../portals/">Portals</a></li>
+          <li><a href="../learn/">New to Printing?</a></li>
+          <li><a href="../quote/">Get a quote</a></li>
+          <li><a href="../non-profit/">Non-Profits</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+        <p class="foot-privacy"><a href="../privacy/" aria-current="page">Privacy &amp; Your Files</a></p>
+      </nav>
+    </div>
+    <p class="foot-legal">© City Graphics 2026. All rights reserved. Site design, content, and the portal experience are proprietary to City Graphics.</p>
+  </footer>
+</body>
+</html>
